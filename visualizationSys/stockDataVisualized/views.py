@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render
 import pandas as pd
-import os
+# import os
 # Create your views here.
 from .models import Stock, SHistoryData
 def index(request):
