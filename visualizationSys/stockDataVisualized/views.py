@@ -15,3 +15,8 @@ def index(request):
     # p2 = os.path.abspath('.')
     # print(p2)
     return render(request, 'sdv/index.html')
+
+
+def home(request):
+    return render(request, 'sdv/home.html')
+

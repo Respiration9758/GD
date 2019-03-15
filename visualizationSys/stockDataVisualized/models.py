@@ -13,8 +13,8 @@ class Stock(models.Model):
         ordering = ('createTime',)
 
 class SHistoryData(models.Model):
-    hd_startTime = models.DateTimeField(default='')
-    hd_endTime = models.DateTimeField(default='')
+    hd_startTime = models.DateField(default='')
+    hd_endTime = models.DateField(default='')
     number = models.IntegerField(blank=True, null=True)
     # 关联外键
     stock = models.ForeignKey(Stock, on_delete=models.CASCADE)
