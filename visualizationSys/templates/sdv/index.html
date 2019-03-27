@@ -1,250 +1,64 @@
+{% extends "sdv/showBase.html" %}
+
 {% load static from staticfiles %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>首页</title>
+{% block breadcrumb%}
+	<li>
+		 <a href="#">Home</a>
+	</li>
+	<li>
+		 <a href="#">Stock Manage</a>
+	</li>
+	<li class="active">
+		Stock
+	</li>
+{% endblock breadcrumb %}
 
 
-	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}" />
+{% block table%}
+	<table class="table">
+		<thead>
+		<tr>
+			<th>
+				Code
+			</th>
+			<th>
+				Name
+			</th>
+			<th>
+				CreatedTime
+			</th>
+			<th>
+				Describe
+			</th>
+			<th>
+				IsDeleted
+			</th>
+		</tr>
+		</thead>
+		<tbody>
+			{% for item in stocksList %}
+				<tr>
+					<td>
+						{{item.code}}
+					</td>
+					<td>
+						{{item.name}}
+					</td>
+					<td>
+						{{item.createTime}}
+					</td>
+					<td>
+						{{item.describe}}
+					</td>
+					<td>
+						{{item.isDelete}}
+					</td>
+		   		</tr>
 
+            {% endfor %}
 
-    <script type="text/javascript" charset="utf-8" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'js/bootstrap.min.js' %}"></script>
+		</tbody>
+	</table>
+{% endblock table%}
 
-</head>
-<body>
-    <div class="container">
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<nav class="navbar navbar-default navbar-inverse navbar-static-top" role="navigation">
-				<div class="navbar-header">
-					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">SDVS</a>
-				</div>
-
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="active">
-							 <a href="#">Home</a>
-						</li>
-						<li>
-							 <a href="#">Function</a>
-						</li>
-					</ul>
-					<form class="navbar-form navbar-left" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" />
-						</div> <button type="submit" class="btn btn-default">Submit</button>
-					</form>
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							 <a href="#">Login</a>
-						</li>
-						<li>
-							 <a href="#">Sign Up</a>
-						</li>
-						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mine<strong class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li>
-									 <a href="#">Action</a>
-								</li>
-								<li>
-									 <a href="#">Another action</a>
-								</li>
-								<li>
-									 <a href="#">Something else here</a>
-								</li>
-								<li class="divider">
-								</li>
-								<li>
-									 <a href="#">Separated link</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-
-			</nav>
-		</div>
-	</div>
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<div class="row clearfix">
-				<div class="col-md-4 column">
-					<div class="panel-group" id="panel-666665">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								 <a class="panel-title" data-toggle="collapse" data-parent="#panel-666665" href="#panel-element-737092">Data Manage</a>
-							</div>
-							<div id="panel-element-737092" class="panel-collapse collapse in">
-								<div class="panel-body">
-									stock
-								</div>
-							</div>
-							<div id="panel-element-7370921" class="panel-collapse collapse in">
-								<div class="panel-body">
-									stock history data
-								</div>
-							</div>
-							<div id="panel-element-7370922" class="panel-collapse collapse in">
-								<div class="panel-body">
-									stock price predict
-								</div>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								 <a class="panel-title" data-toggle="collapse" data-parent="#panel-666665" href="#panel-element-270199">Technical Indicator Manage</a>
-							</div>
-							<div id="panel-element-270199" class="panel-collapse collapse">
-								<div class="panel-body">
-									technical indicator
-								</div>
-							</div>
-							<div id="panel-element-2701993" class="panel-collapse collapse">
-								<div class="panel-body">
-									technical indicator data
-								</div>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								 <a class="panel-title" data-toggle="collapse" data-parent="#panel-666665" href="#panel-element-737092">Visualization Manage</a>
-							</div>
-							<div id="panel-element-7370924" class="panel-collapse collapse in">
-								<div class="panel-body">
-									history data visualized
-								</div>
-							</div>
-							<div id="panel-element-7370925" class="panel-collapse collapse in">
-								<div class="panel-body">
-									indicator visualized
-								</div>
-							</div>
-							<div id="panel-element-7370926" class="panel-collapse collapse in">
-								<div class="panel-body">
-									prediction visualized
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-8 column">
-					<div class="row clearfix">
-						<div class="col-md-12 column">
-							<ul class="breadcrumb">
-								<li>
-									 <a href="#">Home</a>
-								</li>
-								<li>
-									 <a href="#">Library</a>
-								</li>
-								<li class="active">
-									Data
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="row clearfix">
-						<div class="col-md-12 column">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>
-											编号
-										</th>
-										<th>
-											产品
-										</th>
-										<th>
-											交付时间
-										</th>
-										<th>
-											状态
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>
-											1
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											01/04/2012
-										</td>
-										<td>
-											Default
-										</td>
-									</tr>
-									<tr class="success">
-										<td>
-											1
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											01/04/2012
-										</td>
-										<td>
-											Approved
-										</td>
-									</tr>
-									<tr class="error">
-										<td>
-											2
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											02/04/2012
-										</td>
-										<td>
-											Declined
-										</td>
-									</tr>
-									<tr class="warning">
-										<td>
-											3
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											03/04/2012
-										</td>
-										<td>
-											Pending
-										</td>
-									</tr>
-									<tr class="info">
-										<td>
-											4
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											04/04/2012
-										</td>
-										<td>
-											Call in to confirm
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</body>
-</html>
