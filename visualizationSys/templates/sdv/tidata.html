@@ -3,22 +3,23 @@
 {% load static from staticfiles %}
 
 {% block breadcrumb%}
+
 	<li>
-		 <a href="#">Home</a>
-	</li>
-	<li>
-		 <a href="#">Stock Manage</a>
+		 <a href="#">Technical Indicator Manage</a>
 	</li>
 	<li class="active">
-		Stock
+		Indicator data
 	</li>
 {% endblock breadcrumb %}
 
 
 {% block table%}
-	<table class="table">
+	<table class="table table-striped table-bordered table-hover">
 		<thead>
 		<tr>
+			<th>
+				Choice
+			</th>
 			<th>
 				Code
 			</th>
@@ -39,6 +40,9 @@
 		<tbody>
 			{% for item in stocksList %}
 				<tr>
+					<td style="text-align: center">
+						☑
+					</td>
 					<td>
 						{{item.code}}
 					</td>
