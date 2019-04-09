@@ -5,10 +5,10 @@
 {% block breadcrumb%}
 
 	<li>
-		 <a href="#">Technical Indicator Manage</a>
+		 <a href="#">Stock Manage</a>
 	</li>
 	<li class="active">
-		Indicator data
+		Predicted data
 	</li>
 {% endblock breadcrumb %}
 
@@ -18,13 +18,22 @@
 		<thead>
 		<tr>
 			<th>
-				Choice
+				<input type="checkbox">
 			</th>
 			<th>
-				Code
+				ID
 			</th>
 			<th>
-				Name
+				StartTime
+			</th>
+			<th>
+				PredictTime
+			</th>
+            <th>
+				HistoryID
+			</th>
+			<th>
+				HistoryName
 			</th>
 			<th>
 				CreatedTime
@@ -38,19 +47,29 @@
 		</tr>
 		</thead>
 		<tbody>
-			{% for item in stocksList %}
+			{% for item in page.object_list %}
 				<tr>
 					<td style="text-align: center">
-						☑
+						<input type="checkbox">
 					</td>
 					<td>
-						{{item.code}}
+						{{item.id}}
+					</td>
+
+					<td>
+						{{item.startTime.year}}-{{item.startTime.month}}-{{item.startTime.day}}
+					</td>
+                    <td>
+						{{item.predictTime.year}}-{{item.predictTime.month}}-{{item.predictTime.day}}
+					</td>
+                    <td>
+						{{item.SHD.id}}
 					</td>
 					<td>
-						{{item.name}}
+						{{item.SHD.stock.name}}
 					</td>
 					<td>
-						{{item.createTime}}
+						{{item.createTime.year}}-{{item.createTime.month}}-{{item.createTime.day}}
 					</td>
 					<td>
 						{{item.describe}}
@@ -61,6 +80,7 @@
 		   		</tr>
 
             {% endfor %}
+
 
 		</tbody>
 	</table>

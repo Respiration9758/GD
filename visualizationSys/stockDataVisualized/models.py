@@ -1,5 +1,5 @@
 from django.db import models
-
+import datetime
 # Create your models here.
 class Stock(models.Model):
     code = models.CharField(max_length=100, default='')
@@ -11,6 +11,13 @@ class Stock(models.Model):
 
     class Meta:
         ordering = ('createTime',)
+    def __str__(self):
+        return "%s-%s" %(self.code, self.name)
+    @classmethod
+    def createSto(cls, code, name, describe):
+        sto = cls(code=code, name=name, describe=describe, createTime=datetime.datetime.now(), isDelete=False)
+        return sto
+
 
 class SHistoryData(models.Model):
     hd_startTime = models.DateField(default='')
@@ -25,6 +32,9 @@ class SHistoryData(models.Model):
 
     class Meta:
         ordering = ('createTime',)
+
+    def __str__(self):
+        return "%s-%s-%s-%d" %(self.stock.code, self.stock.name, self.hd_startTime, self.number)
 
 
 class TechIndicator(models.Model):
@@ -48,6 +58,9 @@ class TechIndicator(models.Model):
     class Meta:
         ordering = ('createTime',)
 
+    def __str__(self):
+        return "%s-%s" %(self.name, self.shortName)
+
 
 class TIData(models.Model):
     # 一组技术指标数据对应一个指标，一组历史数据
@@ -65,6 +78,8 @@ class TIData(models.Model):
 
     class Meta:
         ordering = ('createTime',)
+    def __str__(self):
+        return "%s-%s-%d" % (self.stockData.stock.name, self.stockData.hd_startTime, self.number)
 
 
 class PredictData(models.Model):
@@ -80,3 +95,6 @@ class PredictData(models.Model):
 
     class Meta:
         ordering = ('createTime',)
+
+    def __str__(self):
+        return "%s-%d-%s" %(self.SHD.stock.name, self.numberOfHD, self.predictTime)

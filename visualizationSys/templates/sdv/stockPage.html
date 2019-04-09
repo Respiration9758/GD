@@ -2,6 +2,10 @@
 
 {% load static from staticfiles %}
 
+{%block linkscript%}
+<script type="text/javascript" charset="UTF-8" src="{% static '/js/stockPage.js'%}"></script>
+{%endblock linkscript%}
+
 {% block breadcrumb%}
 
 	<li>
@@ -18,7 +22,7 @@
 		<thead>
 		<tr>
 			<th>
-				<input type="checkbox">
+				<input type="checkbox" id="allChoiceCheckbox">
 			</th>
 			<th>
 				Code
@@ -41,7 +45,7 @@
 			{% for item in page.object_list %}
 				<tr>
 					<td style="text-align: center">
-						<input type="checkbox">
+						<input type="checkbox" class="everyCheckbox" name="stock" value="{{item.id}}">
 					</td>
 					<td>
 						{{item.code}}

@@ -1,0 +1,42 @@
+{% extends "sdv/base_add.html" %}
+{% load static from staticfiles %}
+{% block linkscript %}
+<script type="text/javascript" charset="utf-8" src="{% static 'js/sto_add.js' %}"></script>
+{% endblock linkscript %}
+
+
+{%block form%}
+    <div class="col-md-2 column">
+		</div>
+		<div class="col-md-8 column">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<h3>
+						Add Stock
+					</h3>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<form role="form" action="/sto_add/" method="post">
+						<div class="form-group">
+							 <label>Code</label><input id="code" name="code" type="text"  class="form-control"  />
+						</div>
+                        <span id="codeerr" class="error" style="display: none">Code must has 6 numbers</span>
+                        <span id="checkerr" class="error" style="display: none">Data already exist</span>
+						<div class="form-group">
+							 <label>Name</label><input id="name" name="name" type="text" class="form-control"  />
+						</div>
+                        <div class="form-group">
+							 <label>Describe</label><textarea id="describe" name="describe" class="form-control" rows="5" ></textarea>
+						</div>
+
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2 column">
+		</div>
+{%endblock form%}
+

@@ -5,10 +5,10 @@
 {% block breadcrumb%}
 
 	<li>
-		 <a href="#">Stock Manage</a>
+		 <a href="#">Technical Indicator Manage</a>
 	</li>
 	<li class="active">
-		Stock
+		Indicator
 	</li>
 {% endblock breadcrumb %}
 
@@ -21,10 +21,19 @@
 				<input type="checkbox">
 			</th>
 			<th>
-				Code
+				ID
 			</th>
 			<th>
 				Name
+			</th>
+			<th>
+				ShortName
+			</th>
+            <th>
+				tType
+			</th>
+			<th>
+				Interface
 			</th>
 			<th>
 				CreatedTime
@@ -38,16 +47,26 @@
 		</tr>
 		</thead>
 		<tbody>
-			{% for item in List %}
+			{% for item in page.object_list %}
 				<tr>
 					<td style="text-align: center">
 						<input type="checkbox">
 					</td>
 					<td>
-						{{item.code}}
+						{{item.id}}
 					</td>
+
 					<td>
 						{{item.name}}
+					</td>
+                    <td>
+						{{item.shortName}}
+					</td>
+                    <td>
+						{{item.tType}}
+					</td>
+					<td>
+						{{item.interface}}
 					</td>
 					<td>
 						{{item.createTime.year}}-{{item.createTime.month}}-{{item.createTime.day}}

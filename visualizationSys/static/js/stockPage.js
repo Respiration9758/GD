@@ -1,10 +1,51 @@
 $(document).ready(function () {
 
-    $("#btn-group ul li a").click(function () {
-        console.log("**********")
-        console.log($(this).innerText)
-        $("#btn-group button").innerText = $(this).innerText
+
+    $("#allChoiceCheckbox").click(function () {
+        if ($(this).prop("checked")==true)
+            $('.everyCheckbox').prop("checked", true)
+        else
+            $('.everyCheckbox').prop("checked", false)
+
     })
+
+
+    $('#batchDelete').click(function () {
+        datadel()
+    })
+
+
+    $('#addData').click(function () {
+        window.location.href="../../sto_add/";
+    })
+
+
+    // 批量删除
+function datadel() {
+	$("input[name='stock']:checked").each(function () {
+        del($(this), $(this).val());
+    })
+}
+
+function del(obj, id) {
+	$.ajax({
+			type: 'delete',
+			url: 'sto_delete/'+id,
+			dataType: 'json',
+			success: function(data){
+				$(obj).parents("tr").remove();
+				alert("已删除"+ id + "!")
+			    // layer.msg('已删除!'+id,{icon:1,time:1000});
+			},
+			error:function(data) {
+				console.log(data.msg);
+			},
+	})
+}
+
+
+
+
 
 
 

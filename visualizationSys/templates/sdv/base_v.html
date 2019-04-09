@@ -2,3 +2,32 @@
 
 {% load static from staticfiles %}
 
+{% block show%}
+<div class="row clearfix" >
+
+    <div class="col-md-12 column">
+        {% block searchForm%}
+
+         {% endblock searchForm%}
+            {%csrf_token%}
+            <div class="form-group">
+		        <label class="sr-only" for="id">ID</label>
+                <input type="text" class="form-control" id="id"
+			   placeholder="{{searchTip}}" name="searchid">
+	        </div>
+            <span id="check" class="error" style="display: none">id not find</span>
+	        <button type="submit" class="btn btn-default"  >search</button>
+        </form>
+    </div>
+</div>
+<br>
+<div class="row clearfix">
+
+    <div id="main" style="width: 100%;height:500px;" class="col-md-12 column">
+        {%block chart%}
+        {%endblock chart%}
+
+
+    </div>
+</div>
+{% endblock show%}
