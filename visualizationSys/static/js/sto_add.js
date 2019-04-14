@@ -9,6 +9,8 @@ $(document).ready(function(){
         codeerr.style.display = "none"
         checkerr.style.display = "none"
     },false)
+
+
     code.addEventListener("blur", function(){
         instr = this.value
         if (instr.length != 6){

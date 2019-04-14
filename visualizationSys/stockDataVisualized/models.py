@@ -36,6 +36,12 @@ class SHistoryData(models.Model):
     def __str__(self):
         return "%s-%s-%s-%d" %(self.stock.code, self.stock.name, self.hd_startTime, self.number)
 
+    @classmethod
+    def createSh(cls, startTime, endTime, number, stock, filePath, describe):
+        sh = cls(hd_startTime=startTime, hd_endTime=endTime, number=number, stock=stock,
+                  filePath=filePath, describe=describe, createTime=datetime.datetime.now(), isDelete=False)
+        return sh
+
 
 class TechIndicator(models.Model):
     # blank=true允许为空

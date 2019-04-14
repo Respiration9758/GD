@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from django.http import JsonResponse, HttpResponse
 import pandas as pd
 import datetime
+import tushare as ts
 from django.core import serializers
 
 import numpy as np
@@ -35,7 +36,7 @@ def historyPage(request, pageID):
     if not (not bool(request.GET)):
         aPageNum = request.GET.get("aPageNum")
 
-    historyList = SHistoryData.objects.all()
+    historyList = SHistoryData.objects.filter(isDelete=False)
     paginator = Paginator(historyList, aPageNum)
     page = paginator.page(pageID)
     return render(request, "sdv/historyPage.html", {"page": page, "detailpage": "historyPage",
@@ -47,7 +48,7 @@ def predictPage(request, pageID):
     if not (not bool(request.GET)):
         aPageNum = request.GET.get("aPageNum")
 
-    predictList = PredictData.objects.all()
+    predictList = PredictData.objects.filter(isDelete=False)
     paginator = Paginator(predictList, aPageNum)
     page = paginator.page(pageID)
     return render(request, "sdv/predictPage.html", {"page": page, "detailpage": "predictPage",
@@ -62,7 +63,7 @@ def indicatorPage(request, pageID):
     if not (not bool(request.GET)):
         aPageNum = request.GET.get("aPageNum")
 
-    indicatorList = TechIndicator.objects.all()
+    indicatorList = TechIndicator.objects.filter(isDelete=False)
     paginator = Paginator(indicatorList, aPageNum)
     page = paginator.page(pageID)
     return render(request, "sdv/indicatorPage.html", {"page": page, "detailpage": "indicatorPage",
@@ -74,7 +75,7 @@ def tidataPage(request, pageID):
     if not (not bool(request.GET)):
         aPageNum = request.GET.get("aPageNum")
 
-    tidataList = TIData.objects.all()
+    tidataList = TIData.objects.filter(isDelete=False)
     paginator = Paginator(tidataList, aPageNum)
     page = paginator.page(pageID)
     return render(request, "sdv/tidataPage.html", {"page": page, "detailpage": "tidataPage",
@@ -93,7 +94,7 @@ def his_v(request):
         pass
     else:
         try:
-            h_d = SHistoryData.objects.get(pk=h_id)
+            h_d = SHistoryData.objects.get(pk=h_id, isDelete=False)
 
             df_hd = pd.read_csv(h_d.filePath, index_col='date', parse_dates=['date'])
 
@@ -246,24 +247,39 @@ def checkCode(request):
 @csrf_exempt
 def sh_add(request):
     if (request.method == 'POST'):
-        code = request.POST.get('code')
-        name = request.POST.get('name')
+
+        stock = request.POST.get('stock')
+        startTime = request.POST.get('startTime')
+        endTime = request.POST.get('endTime')
         describe = request.POST.get('describe')
-        Stock.createSto(code, name, describe).save()
+
+        df_sh = ts.get_hist_data(stock,start=startTime,end=endTime)[['open', 'close', 'high', 'low', 'volume']]
+        df_sh.index = df_sh.index.sort_values()
+        number = len(df_sh)
+        filePath = './dataset/shd/'+stock+'_'+startTime+'_'+str(number)+'.csv'
+        df_sh.to_csv(filePath)
+        sto = Stock.objects.get(code=stock)
+        SHistoryData.createSh(startTime, endTime, number, sto,
+                              filePath, describe).save()
+
+
+
+        # Stock.createSto(code, name, describe).save()
         return redirect("/historyPage/1/")
     else:
         today = str(datetime.datetime.now().date())
         print(today)
-        return render(request, "sdv/sh_add.html",{"today": today,})
+        return render(request, "sdv/sh_add.html", {"today": today, })
 
 @csrf_exempt
 def showStock(request):
-    data = serializers.serialize("json", Stock.objects.all())
 
-    if (len(data) != 0):
-        return JsonResponse({"data": data, "status": "success"})
-    else:
-        return JsonResponse({"data": "0 data", "status": "error"})
+    sto_list = Stock.objects.filter(isDelete=False).values('code', 'name')
+    data = json.dumps(list(sto_list))
+    print(type(data))
+    # data = serializers.serialize("json", sto_list)[1:-1]
+    return JsonResponse(data, safe=False)
+
 
 
 def add_sh(request):

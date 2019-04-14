@@ -54,6 +54,14 @@
             saveAsImage: {}
         }
     },
+	grid: {     //直角坐标系
+		show:true,
+		top:65,
+		left: '10%',    //grid组件离容器左侧的距离
+		right: '10%',
+		bottom: '20%',
+		//backgroundColor:'#ccc'
+	},
     xAxis:  {
         type: 'category',
         boundaryGap: false,
@@ -80,7 +88,30 @@
 		},
 		markLine: {
 			data: [
-				{type: 'average', name: '平均值'}
+					[
+                                {
+                                    name: 'from lowest to highest',
+                                    type: 'min',    //设置该标线为最小值的线
+                                    // valueDim: 'lowest', //指定在哪个维度上的最小值
+                                    symbol: 'circle',
+                                    symbolSize: 10, //起点标记的大小
+                                    label: {    //normal默认，emphasis高亮
+                                        normal: {show: false},  //不显示标签
+                                        emphasis: {show: false} //不显示标签
+                                    }
+                                },
+                                {
+                                    type: 'max',
+                                    // valueDim: 'highest',
+                                    symbol: 'circle',
+                                    symbolSize: 10,
+                                    label: {
+                                        normal: {show: false},
+                                        emphasis: {show: false}
+                                    }
+                                }
+                            ],
+					{type: 'average', name: '平均值'}
 			]
 		}},
 		{

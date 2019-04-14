@@ -2,6 +2,11 @@
 
 {% load static from staticfiles %}
 
+
+{%block linkscript%}
+<script type="text/javascript" charset="UTF-8" src="{% static '/js/historyPage.js'%}"></script>
+{%endblock linkscript%}
+
 {% block breadcrumb%}
 
 	<li>
@@ -41,9 +46,7 @@
 			<th>
 				Describe
 			</th>
-			<th>
-				IsDeleted
-			</th>
+
 		</tr>
 		</thead>
 		<tbody>
@@ -73,9 +76,7 @@
 					<td>
 						{{item.describe}}
 					</td>
-					<td>
-						{{item.isDelete}}
-					</td>
+
 		   		</tr>
 
             {% endfor %}

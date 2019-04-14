@@ -22,7 +22,7 @@ urlpatterns = [
     re_path(r'sto_add/$', views.sto_add, name='sto_add'),
     re_path(r'^checkCode/$', views.checkCode, name='checkCode'),
 
-    re_path(r'sh_add/$', views.sh_add, name='sh_add'),
+    re_path(r'^sh_add/$', views.sh_add, name='sh_add'),
     re_path(r'showStock/$', views.showStock, name='showStock'),
 
 
