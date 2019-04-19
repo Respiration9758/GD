@@ -5,10 +5,10 @@
 {% block breadcrumb%}
 
 	<li>
-		 <a href="#">Technical Indicator Manage</a>
+		 <a href="#">技术指标管理</a>
 	</li>
 	<li class="active">
-		Indicator
+		技术指标信息
 	</li>
 {% endblock breadcrumb %}
 
@@ -17,33 +17,27 @@
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
 		<tr>
-			<th>
+			<th  style="text-align: center">
 				<input type="checkbox">
 			</th>
 			<th>
 				ID
 			</th>
 			<th>
-				Name
+				技术指标名称
 			</th>
 			<th>
-				ShortName
+				简称
 			</th>
             <th>
-				tType
+				指标类型
 			</th>
 			<th>
-				Interface
+				计算接口
 			</th>
-			<th>
-				CreatedTime
-			</th>
-			<th>
-				Describe
-			</th>
-			<th>
-				IsDeleted
-			</th>
+
+
+
 		</tr>
 		</thead>
 		<tbody>
@@ -68,15 +62,7 @@
 					<td>
 						{{item.interface}}
 					</td>
-					<td>
-						{{item.createTime.year}}-{{item.createTime.month}}-{{item.createTime.day}}
-					</td>
-					<td>
-						{{item.describe}}
-					</td>
-					<td>
-						{{item.isDelete}}
-					</td>
+
 		   		</tr>
 
             {% endfor %}

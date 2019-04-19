@@ -14,13 +14,13 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 from .models import Stock, SHistoryData, PredictData, TechIndicator, TIData
 from tools.dataProcess import calculateMA, calculateEMA, calculateKDJ, calculatePSY
-
+import tools.dataProcess
 
 
 def stockPage(request, pageID):
 
 
-    aPageNum = 3
+    aPageNum = 5
     if not(not bool(request.GET)):
         aPageNum = request.GET.get("aPageNum")
 
@@ -28,11 +28,11 @@ def stockPage(request, pageID):
     paginator =Paginator(stocksList, aPageNum)
     page = paginator.page(pageID)
     return render(request, "sdv/stockPage.html", {"page": page, "detailpage": "stockPage",
-                                                  "title": 'stockPage', "listNum": len(stocksList),
+                                                  "title": '股票信息', "listNum": len(stocksList),
                                                   "aPageNum": aPageNum
                                                   })
 def historyPage(request, pageID):
-    aPageNum = 3
+    aPageNum = 5
     if not (not bool(request.GET)):
         aPageNum = request.GET.get("aPageNum")
 
@@ -40,11 +40,11 @@ def historyPage(request, pageID):
     paginator = Paginator(historyList, aPageNum)
     page = paginator.page(pageID)
     return render(request, "sdv/historyPage.html", {"page": page, "detailpage": "historyPage",
-                                                  "title": 'historyPage', "listNum": len(historyList),
+                                                  "title": '历史行情', "listNum": len(historyList),
                                                   "aPageNum": aPageNum
                                                   })
 def predictPage(request, pageID):
-    aPageNum = 3
+    aPageNum = 5
     if not (not bool(request.GET)):
         aPageNum = request.GET.get("aPageNum")
 
@@ -52,14 +52,14 @@ def predictPage(request, pageID):
     paginator = Paginator(predictList, aPageNum)
     page = paginator.page(pageID)
     return render(request, "sdv/predictPage.html", {"page": page, "detailpage": "predictPage",
-                                                  "title": 'predictPage', "listNum": len(predictList),
+                                                  "title": '股价预测', "listNum": len(predictList),
                                                   "aPageNum": aPageNum
                                                   })
 
 
 
 def indicatorPage(request, pageID):
-    aPageNum = 3
+    aPageNum = 5
     if not (not bool(request.GET)):
         aPageNum = request.GET.get("aPageNum")
 
@@ -67,11 +67,11 @@ def indicatorPage(request, pageID):
     paginator = Paginator(indicatorList, aPageNum)
     page = paginator.page(pageID)
     return render(request, "sdv/indicatorPage.html", {"page": page, "detailpage": "indicatorPage",
-                                                  "title": 'indicatorPage', "listNum": len(indicatorList),
+                                                  "title": '技术指标信息', "listNum": len(indicatorList),
                                                   "aPageNum": aPageNum
                                                   })
 def tidataPage(request, pageID):
-    aPageNum = 3
+    aPageNum = 5
     if not (not bool(request.GET)):
         aPageNum = request.GET.get("aPageNum")
 
@@ -79,7 +79,7 @@ def tidataPage(request, pageID):
     paginator = Paginator(tidataList, aPageNum)
     page = paginator.page(pageID)
     return render(request, "sdv/tidataPage.html", {"page": page, "detailpage": "tidataPage",
-                                                  "title": 'tidataPage', "listNum": len(tidataList),
+                                                  "title": '技术指标数据', "listNum": len(tidataList),
                                                   "aPageNum": aPageNum
                                                 })
 
@@ -125,10 +125,11 @@ def his_v(request):
 
         except SHistoryData.DoesNotExist as e:
             return redirect("/add_sh/")
-    return render(request, 'sdv/his_data_v.html', {"showData": showData, "title": "his_v",
-                                                   "searchTip": "Please enter history data id"})
+    return render(request, 'sdv/his_data_v.html', {"showData": showData, "title": "历史行情数据可视化",
+                                                   "searchTip": "请输入历史行情数据ID"})
 def pred_v(request):
     p_id = request.POST.get("searchid")
+
     showData = {}
     if p_id == None:
         pass
@@ -150,56 +151,106 @@ def pred_v(request):
             }
         except PredictData.DoesNotExist as e:
             return redirect("/add_sh/")
-    return render(request, 'sdv/pred_data_v.html', {"showData": showData, "title": "pred_v",
-                                                   "searchTip": "Please enter predicted data id"})
+    return render(request, 'sdv/pred_data_v.html', {"showData": showData, "title": "股价预测数据可视化",
+                                                   "searchTip": "请输入股价预测数据ID"})
 def ti_v(request):
-    t_id = request.POST.get("searchid")
-    showData = {}
-    if t_id == None:
-        pass
-    else:
-        try:
-            t_d = TIData.objects.get(pk=t_id)
-
-            df_td = pd.read_csv(t_d.filePath, index_col='date', parse_dates=['date'])
-
-            date = []
-            data = []
-            for i in range(0, len(df_td)):
-                data.append(list(df_td.iloc[i][['open', 'close', 'low', 'high', 'volume']].values))
-                date.append(df_td.index[i].strftime("%Y-%m-%d"))
-
-            if 'PSY' not in df_td.columns.values.tolist():
-                for i in [5, 10, 20]:
-                    calculateMA(df_td, i)
-                for i in [10, 20, 30]:
-                    calculateEMA(df_td, i)
-                calculateKDJ(df_td)
-                calculatePSY(df_td, 10)
-                df_hd = df_td.fillna('-')
-                df_hd.to_csv(t_d.filePath)
-
-            showData = {
-                "chartTitle": t_d.stockData.stock.name + "-" + t_d.stockData.stock.code,
-                "date": date,
-                "data": data,
-                "MA_5": list(df_td['MA_5'].values),
-                "volume": list(df_td['volume'].values),
-                "MA_10": list(df_td['MA_10'].values),
-                "MA_20": list(df_td['MA_20'].values),
-                "EMA10": list(df_td['EMA10'].values),
-                "EMA20": list(df_td['EMA20'].values),
-                "EMA30": list(df_td['EMA30'].values),
-                "KValue": list(df_td['KValue'].values),
-                "DValue": list(df_td['DValue'].values),
-                "JValue": list(df_td['JValue'].values),
-                "PSY": list(df_td['PSY'].values),
-
-            }
-        except TIData.DoesNotExist as e:
-            return redirect("/add_sh/")
-    return render(request, 'sdv/ti_data_v.html', {"showData": showData, "title": "ti_v",
-                                                    "searchTip": "Please enter technical indicator data id"})
+    # t_id = request.POST.get("searchid")
+    # t_indicators = request.POST.getlist("indicators")
+    #
+    # # showData = {}
+    # show_data = {}
+    # if (t_id == None) or (t_id == ''):
+    #     pass
+    # else:
+    #     try:
+    #         t_d = TIData.objects.get(pk=t_id)
+    #
+    #         df_td = pd.read_csv(t_d.filePath, index_col='date', parse_dates=['date'])
+    #
+    #         date = []
+    #         data = []
+    #         for i in range(0, len(df_td)):
+    #             data.append(list(df_td.iloc[i][['open', 'close', 'low', 'high', 'volume']].values))
+    #             date.append(df_td.index[i].strftime("%Y-%m-%d"))
+    #
+    #         show_data = {
+    #             "chartTitle": t_d.stockData.stock.name + "-" + t_d.stockData.stock.code,
+    #             "date": date,
+    #             "data": data,
+    #             "volume": list(df_td['volume'].values)
+    #         }
+    #
+    #         # if 'MACD' not in df_td.columns.values.tolist():
+    #         #     # for i in [5, 10, 20]:
+    #         #     #     calculateMA(df_td, i)
+    #         #     # for i in [10, 20, 30]:
+    #         #     #     calculateEMA(df_td, i)
+    #         #     # calculateKDJ(df_td)
+    #         #     # calculatePSY(df_td, 10)
+    #         #     tools.dataProcess.calculateMACD(df_td)
+    #         #     tools.dataProcess.calculateRSI(df_td)
+    #         #     tools.dataProcess.calculateBBANDS(df_td)
+    #         #     tools.dataProcess.calculateMOM(df_td)
+    #         #     tools.dataProcess.calculateOBV(df_td)
+    #         #     tools.dataProcess.calculateTRIX(df_td)
+    #         #     df_td = df_td.fillna('-')
+    #         #     df_td.to_csv(t_d.filePath)
+    #         # i_name_list = []
+    #         #
+    #         # if 'MA' in t_indicators:
+    #         #     i_name_list.append(['MA_5', 'MA_10', 'MA_20'])
+    #         # if 'EMA' in t_indicators:
+    #         #     i_name_list.append(['EMA10', 'EMA20', 'EMA30'])
+    #         # if 'KDJ' in t_indicators:
+    #         #     i_name_list.append(['KValue', 'DValue', 'JValue'])
+    #         # if 'PSY' in t_indicators:
+    #         #     i_name_list.append(['PSY'])
+    #         # if 'MACD' in t_indicators:
+    #         #     i_name_list.append(['DIFF', 'DEA', 'MACD'])
+    #         # if 'RSI' in t_indicators:
+    #         #     i_name_list.append(['RSI6', 'RSI12', 'RSI24'])
+    #         # if 'MOM' in t_indicators:
+    #         #     i_name_list.append(['MOM25', 'MOM25_MA_10'])
+    #         # if 'Bolling' in t_indicators:
+    #         #     i_name_list.append(['UPPER', 'MID', 'LOWER'])
+    #         # if 'OBV' in t_indicators:
+    #         #     i_name_list.append(['OBV'])
+    #         # if 'TRIX' in t_indicators:
+    #         #     i_name_list.append(['TRIX12', 'TRIX20'])
+    #         #
+    #         #
+    #         # for i in i_name_list:
+    #         #    for j in i:
+    #         #        show_data[''+j] = list(df_td[j].values)
+    #         #
+    #         # show_data['i_name_list'] = i_name_list
+    #         # show_data['t_indicators'] = t_indicators
+    #
+    #
+    #
+    #         # showData = {
+    #         #     "chartTitle": t_d.stockData.stock.name + "-" + t_d.stockData.stock.code,
+    #         #     "date": date,
+    #         #     "data": data,
+    #         #     "volume": list(df_td['volume'].values),
+    #         #     "MA_5": list(df_td['MA_5'].values),
+    #         #     "MA_10": list(df_td['MA_10'].values),
+    #         #     "MA_20": list(df_td['MA_20'].values),
+    #         #     "EMA10": list(df_td['EMA10'].values),
+    #         #     "EMA20": list(df_td['EMA20'].values),
+    #         #     "EMA30": list(df_td['EMA30'].values),
+    #         #     "KValue": list(df_td['KValue'].values),
+    #         #     "DValue": list(df_td['DValue'].values),
+    #         #     "JValue": list(df_td['JValue'].values),
+    #         #     "PSY": list(df_td['PSY'].values),
+    #         #
+    #         # }
+    #
+    #     except TIData.DoesNotExist as e:
+    #
+    #         return redirect("/add_sh/")
+    return render(request, 'sdv/ti_data_v.html', {"title": "技术指标数据可视化",
+                                                    })
 
 
 def home(request):
@@ -213,6 +264,73 @@ def home(request):
     # # print(p2)
     return render(request, 'sdv/home.html')
 
+@csrf_exempt
+def obtain_tidata(request):
+    t_id = request.POST.get("searchid")
+    t_indicators = request.POST.getlist("indicators[]")
+
+    show_data = {}
+    if (t_id == None) or (t_id == ''):
+        pass
+    else:
+        try:
+            t_d = TIData.objects.get(pk=t_id)
+
+            df_td = pd.read_csv(t_d.filePath, index_col='date', parse_dates=['date'])
+
+            date = []
+            data = []
+            for i in range(0, len(df_td)):
+                data.append(list(df_td.iloc[i][['open', 'close', 'low', 'high', 'volume']].values))
+                date.append(df_td.index[i].strftime("%Y-%m-%d"))
+
+            show_data = {
+                "chartTitle": t_d.stockData.stock.name + "-" + t_d.stockData.stock.code,
+                "date": date,
+                "data": data,
+                "volume": list(df_td['volume'].values),
+                "MA_5": list(df_td['MA_5'].values),
+                "MA_10": list(df_td['MA_10'].values),
+                "MA_20": list(df_td['MA_20'].values)
+            }
+
+
+            i_name_list = []
+
+            if 'MA' in t_indicators:
+                i_name_list.append(['MA_5', 'MA_10', 'MA_20'])
+            if 'EMA' in t_indicators:
+                i_name_list.append(['EMA10', 'EMA20', 'EMA30'])
+            if 'KDJ' in t_indicators:
+                i_name_list.append(['KValue', 'DValue', 'JValue'])
+            if 'PSY' in t_indicators:
+                i_name_list.append(['PSY'])
+            if 'MACD' in t_indicators:
+                i_name_list.append(['DIFF', 'DEA', 'MACD'])
+            if 'RSI' in t_indicators:
+                i_name_list.append(['RSI6', 'RSI12', 'RSI24'])
+            if 'MOM' in t_indicators:
+                i_name_list.append(['MOM25', 'MOM25_MA_10'])
+            if 'Bolling' in t_indicators:
+                i_name_list.append(['UPPER', 'MID', 'LOWER'])
+            if 'OBV' in t_indicators:
+                i_name_list.append(['OBV'])
+            if 'TRIX' in t_indicators:
+                i_name_list.append(['TRIX12', 'TRIX20'])
+
+            for i in i_name_list:
+                for j in i:
+                    show_data['' + j] = list(df_td[j].values)
+
+            show_data['i_name_list'] = i_name_list
+            show_data['t_indicators'] = t_indicators
+            print(i_name_list)
+            print(i_name_list)
+
+        except TIData.DoesNotExist as e:
+            print("找不得到页面")
+            return redirect("/add_sh/")
+    return JsonResponse({'showData': show_data})
 
 
 @csrf_exempt
@@ -280,7 +398,17 @@ def showStock(request):
     # data = serializers.serialize("json", sto_list)[1:-1]
     return JsonResponse(data, safe=False)
 
+def showIndicator(request):
+    indicator_list = TechIndicator.objects.filter(isDelete=False).values('shortName')
+
+    data = json.dumps(list(indicator_list))
+
+    # data = serializers.serialize("json", sto_list)[1:-1]
+    return JsonResponse(data, safe=False)
+
+
+
 
 
 def add_sh(request):
-    return HttpResponse("Don't find data of ID")
+    return HttpResponse("没有找到ID对应的数据集！")

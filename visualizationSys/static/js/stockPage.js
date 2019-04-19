@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    $(".table ").attr("style","table-layout: fixed")
+
 
     $("#allChoiceCheckbox").click(function () {
         if ($(this).prop("checked")==true)

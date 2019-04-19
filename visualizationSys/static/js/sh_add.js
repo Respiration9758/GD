@@ -48,7 +48,7 @@ $(document).ready(function () {
 
         dateFormat =/^(\d{4})-(\d{2})-(\d{2})$/
         if(dateFormat.test(instr)){
-            console.log(instr+"$$$$$$$$")
+
             $('#endTime').attr("min",""+instr)
         }
 

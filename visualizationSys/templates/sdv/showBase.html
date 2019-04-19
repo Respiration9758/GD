@@ -11,28 +11,28 @@
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<div class="row clearfix">
-				<div class="col-md-4 column">
-					 <button type="button" class="btn btn-default" id="batchDelete">Batch Delete</button>
+				<div class="col-md-6 column">
+					 <button type="button" class="btn btn-default" id="batchDelete">批量删除</button>
 
-					 <button type="button" class="btn btn-default" id="addData" href="../../sto_add/">Add Data</button>
+					 <button type="button" class="btn btn-default" id="addData" href="../../sto_add/">添加数据</button>
 				</div>
-				<div class="col-md-1 column">
+				<div class="col-md-6 column">
 				</div>
-				<div class="col-md-7 column">
-					<div style="float: right">
+				<!--<div class="col-md-7 column">-->
+					<!--<div style="float: right">-->
 
-						<span>Number of data : {{listNum|default:0}}</span>
-					</div>
-				</div>
+						<!--<span>共有&nbsp;  {{listNum|default:0}}&nbsp; 条数据</span>-->
+					<!--</div>-->
+				<!--</div>-->
 			</div>
 			<br/>
 			<div class="row clearfix">
 				<div class="col-md-3 column">
 
-					 <span>show
+					 <span>每页
 						 <div class="btn-group">
 						 <button type="button" class=" num btn btn-default  btn-sm " >
-							 {{aPageNum|default:3}}
+							 {{aPageNum|default:5}}
 
 						 </button>
 							 <button type="button" class="  btn btn-default dropdown-toggle btn-sm " data-toggle="dropdown">
@@ -48,32 +48,36 @@
 								<li><a href="/{{detailpage}}/1/?aPageNum=15">15</a></li>
 							</ul>
 						 </div>
-						  data</span>
+						   条数据</span>
 				</div>
 				<div class="col-md-3 column">
 				</div>
 				<div class="col-md-6 column" >
+					<div style="float: right">
 
-						<div class="input-group" style="float: right" >
-						<input type="text" class="form-control" >
-						<div class="input-group-btn">
-						<button type="button" class="btn btn-default" tabindex="-1">search for
-						</button>
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
-								<span class="caret"></span>
-								<span class="sr-only">change meue</span>
-							</button>
-							<ul class="dropdown-menu pull-right">
-								<li><a href="#">code</a></li>
-								<li><a href="#">name</a></li>
-								<li><a href="#">createTime</a></li>
-								<li class="divider"></li>
-								<li><a href="#">others</a></li>
-							</ul>
-							<button type="button" class="btn btn-default"  >  Go  </button>
-						</div><!-- /btn-group -->
+						<span>共有&nbsp;  {{listNum|default:0}}&nbsp; 条数据</span>
+					</div>
 
-					</div><!-- /input-group -->
+						<!--<div class="input-group" style="float: right" >-->
+						<!--<input type="text" class="form-control" >-->
+						<!--<div class="input-group-btn">-->
+						<!--<button type="button" class="btn btn-default" tabindex="-1">search for-->
+						<!--</button>-->
+							<!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">-->
+								<!--<span class="caret"></span>-->
+								<!--<span class="sr-only">change meue</span>-->
+							<!--</button>-->
+							<!--<ul class="dropdown-menu pull-right">-->
+								<!--<li><a href="#">code</a></li>-->
+								<!--<li><a href="#">name</a></li>-->
+								<!--<li><a href="#">createTime</a></li>-->
+								<!--<li class="divider"></li>-->
+								<!--<li><a href="#">others</a></li>-->
+							<!--</ul>-->
+							<!--<button type="button" class="btn btn-default"  >  Go  </button>-->
+						<!--</div>&lt;!&ndash; /btn-group &ndash;&gt;-->
+
+					<!--</div>&lt;!&ndash; /input-group &ndash;&gt;-->
 
 
 				 </div>
@@ -91,11 +95,11 @@
 					<ul class="pagination">
 						{%if page.has_previous%}
 						<li>
-							 <a href="/{{detailpage}}/{{page.previous_page_number}}/">Prev</a>
+							 <a href="/{{detailpage}}/{{page.previous_page_number}}/">上一页</a>
 						</li>
 						{%else%}
 						<li class="disabled">
-							 <a href="#">Prev</a>
+							 <a href="#">上一页</a>
 						</li>
 						{%endif%}
 
@@ -112,11 +116,11 @@
 
 						{%if page.has_next%}
 						<li>
-							 <a href="/{{detailpage}}/{{page.next_page_number}}/">Next</a>
+							 <a href="/{{detailpage}}/{{page.next_page_number}}/">下一页</a>
 						</li>
 						{%else%}
 						<li class="disabled">
-							 <a href="#">Next</a>
+							 <a href="#">下一页</a>
 						</li>
 						{%endif%}
 					</ul>

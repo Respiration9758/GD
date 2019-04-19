@@ -35,3 +35,30 @@ def calculatePSY(df, period):
             # definition of the psy: the number of the price increases to the total number of days
         df.insert(1, 'PSY', psy)
 
+def calculateMACD(df):
+    # 调用talib计算指数移动平均线的值
+    df['EMA12'] = talib.EMA(df['close'].values, timeperiod=6)
+    df['EMA26'] = talib.EMA(df['close'].values, timeperiod=12)
+    # 调用talib计算MACD指标
+    df['DIFF'], df['DEA'], df['MACD'] = talib.MACD(df['close'].values,
+                                                              fastperiod=6, slowperiod=12, signalperiod=9)
+def calculateRSI(df):
+    df['RSI12'] = talib.RSI(df['close'].values, timeperiod=12)  # RSI的天数一般是6、12、24
+    df['RSI6'] = talib.RSI(df['close'].values, timeperiod=6)
+    df['RSI24'] = talib.RSI(df['close'].values, timeperiod=24)
+
+
+def calculateMOM(df):
+    df['MOM25'] = talib.MOM(df['close'].values, timeperiod=25)
+    df["MOM25_MA_10"] = df['MOM25'].rolling(10).mean()
+
+def calculateBBANDS(df):
+    df['UPPER'], df['MID'], df['LOWER'] =talib.BBANDS(df['close'].values,matype=talib.MA_Type.T3)
+
+
+def calculateOBV(df):
+    df['OBV'] = talib.OBV(df['close'].values, df['volume'].values)
+
+def calculateTRIX(df):
+    df['TRIX12'] = talib.TRIX(df['close'].values, timeperiod=12)
+    df['TRIX20'] = talib.TRIX(df['close'].values, timeperiod=20)

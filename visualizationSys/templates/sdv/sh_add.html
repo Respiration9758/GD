@@ -12,7 +12,7 @@
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 					<h3>
-						Add History Data
+						添加历史行情数据
 					</h3>
 				</div>
 			</div>
@@ -20,28 +20,28 @@
 				<div class="col-md-12 column">
 					<form role="form" action="/sh_add/" method="post">
 						<div class="form-group">
-                            <label >Stock</label>
+                            <label >股票代码及名称</label>
                             <select id='stock' name="stock" class="form-control" >
 
 
                             </select>
                         </div>
                         <div class="form-group">
-							 <label>StartTime</label>
+							 <label>开始日期</label>
                              <br/>
                              <input type="date" id="startTime" name="startTime" min="1990-01-01" max="{{today}}" >
 						</div>
                         <div class="form-group">
-							 <label>EndTime</label>
+							 <label>结束日期</label>
                                <br/>
                             <input type="date" id="endTime" name="endTime"  max="{{today}}">
 						</div>
 
 						<div class="form-group">
-							 <label>Describe</label><textarea id="describe" name="describe" class="form-control" rows="5" ></textarea>
+							 <label>详情</label><textarea id="describe" name="describe" class="form-control" rows="5" ></textarea>
 						</div>
 
-						<button type="submit" class="btn btn-default">Submit</button>
+						<button type="submit" class="btn btn-default">确认添加</button>
 					</form>
 				</div>
 			</div>

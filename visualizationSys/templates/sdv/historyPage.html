@@ -10,10 +10,10 @@
 {% block breadcrumb%}
 
 	<li>
-		 <a href="#">Stock Manage</a>
+		 <a href="#">数据管理</a>
 	</li>
 	<li class="active">
-		History data
+		历史行情
 	</li>
 {% endblock breadcrumb %}
 
@@ -22,29 +22,27 @@
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
 		<tr>
-			<th>
+			<th style="text-align: center; width: 5%">
 				<input type="checkbox">
 			</th>
-			<th>
+			<th style="width: 5%">
 				ID
 			</th>
-			<th>
-				Stock
+			<th style="width: 10%">
+				股票代码
 			</th>
-			<th>
-				StartTime
+			<th style="width: 15%">
+				开始时间
 			</th>
-            <th>
-				 &nbsp;&nbsp;EndTime&nbsp;&nbsp;
+            <th style="width: 15%">
+				 结束时间
 			</th>
-            <th>
-				Number
+            <th style="width: 10%">
+				数据量
 			</th>
-			<th>
-				CreatedTime
-			</th>
-			<th>
-				Describe
+
+			<th >
+				详情
 			</th>
 
 		</tr>
@@ -70,9 +68,7 @@
                     <td>
 						{{item.number}}
 					</td>
-					<td>
-						{{item.createTime.year}}-{{item.createTime.month}}-{{item.createTime.day}}
-					</td>
+
 					<td>
 						{{item.describe}}
 					</td>

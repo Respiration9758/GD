@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'visualizationSys.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sdv1',
+        'NAME': 'sdv',
         'USER': 'root',
         'PASSWORD': 'respiration',
         'HOST': 'localhost',

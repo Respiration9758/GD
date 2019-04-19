@@ -25,6 +25,10 @@ urlpatterns = [
     re_path(r'^sh_add/$', views.sh_add, name='sh_add'),
     re_path(r'showStock/$', views.showStock, name='showStock'),
 
+    re_path(r'showIndicator/$', views.showIndicator, name='showIndicator'),
+    re_path(r'obtain_tidata/$', views.obtain_tidata, name='obtain_tidata'),
 
+    re_path(r'', views.home, name='home'),
     re_path(r'^home/$', views.home, name='home'),
+
 ]

@@ -9,18 +9,29 @@
 {% block breadcrumb%}
 	
 	<li>
-		 <a href="#">Visualization</a>
+		 <a href="#">可视化管理</a>
 	</li>
 	<li class="active">
-		History data visualized
+		历史行情数据可视化
 	</li>
 {% endblock breadcrumb %}
 
 {% block searchForm%}
 	<form class="form-inline" role="form" style="text-align: center" action="/his_v/" method="post">
+		{%csrf_token%}
+
+		<div class="form-group">
+			<label class="sr-only" for="id">ID</label>
+			<input type="text" class="form-control" id="id"
+		   placeholder="{{searchTip}}" name="searchid">
+		</div>
+		<span id="check" class="error" style="display: none">ID 没有找到</span>
+		<button type="submit" class="btn btn-default"  >确定</button>
+        </form>
 {% endblock searchForm%}
 
 {%block chart%}
+	<div id="main" style="width: 100%;height:500px;" class="col-md-12 column">
        <!--<script type="text/javascript">-->
 		   <!---->
 	   <!--// function calculateMA(dayCount, data) {-->

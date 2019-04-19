@@ -12,7 +12,7 @@
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 					<h3>
-						Add Stock
+						添加股票信息
 					</h3>
 				</div>
 			</div>
@@ -20,18 +20,18 @@
 				<div class="col-md-12 column">
 					<form role="form" action="/sto_add/" method="post">
 						<div class="form-group">
-							 <label>Code</label><input id="code" name="code" type="text"  class="form-control"  />
+							 <label>股票代码</label><input id="code" name="code" type="text"  class="form-control"  />
 						</div>
-                        <span id="codeerr" class="error" style="display: none">Code must has 6 numbers</span>
-                        <span id="checkerr" class="error" style="display: none">Data already exist</span>
+                        <span id="codeerr" class="error" style="display: none">股票代码不是六位数字！</span>
+                        <span id="checkerr" class="error" style="display: none">即将添加的数据已存在！</span>
 						<div class="form-group">
-							 <label>Name</label><input id="name" name="name" type="text" class="form-control"  />
+							 <label>股票名称</label><input id="name" name="name" type="text" class="form-control"  />
 						</div>
                         <div class="form-group">
-							 <label>Describe</label><textarea id="describe" name="describe" class="form-control" rows="5" ></textarea>
+							 <label>详情</label><textarea id="describe" name="describe" class="form-control" rows="5" ></textarea>
 						</div>
 
-						<button type="submit" class="btn btn-default">Submit</button>
+						<button type="submit" class="btn btn-default">确定添加</button>
 					</form>
 				</div>
 			</div>
