@@ -2,6 +2,10 @@
 
 {% load static from staticfiles %}
 
+{%block linkscript%}
+<script type="text/javascript" charset="UTF-8" src="{% static '/js/tidataPage.js'%}"></script>
+{%endblock linkscript%}
+
 {% block breadcrumb%}
 
 	<li>
@@ -18,19 +22,22 @@
 		<thead>
 		<tr>
 			<th style="text-align: center">
-				<input type="checkbox">
+				<input type="checkbox" id="allChoiceCheckbox">
 			</th>
-			<th>
+			<th style="width: 3%">
 				ID
 			</th>
-			<th>
+			<th style="width:9%" >
 				历史行情
 			</th>
+			<th style="width:10%">
+				股票名称
+			</th>
 
-            <th>
+            <th style="width:8%">
 				数据量
 			</th>
-			<th>
+			<th style="width:13%">
 				创建时间
 			</th>
 			<th>
@@ -42,18 +49,21 @@
 		<tbody>
 			{% for item in page.object_list %}
 				<tr>
-					<td style="text-align: center">
-						<input type="checkbox">
+					<td style="text-align: center;width: 5%">
+						<input type="checkbox" class="everyCheckbox" name="tidata" value="{{item.id}}">
 					</td>
-					<td>
+					<td >
 						{{item.id}}
 					</td>
-					<td>
+					<td style="text-align: center">
 						{{item.stockData.id}}
+					</td>
+					<td>
+						{{item.stockData.stock.name}}
 					</td>
 					
                     <td>
-						{{item.number}}
+						{{item.stockData.number}}
 					</td>
 					<td>
 						{{item.createTime.year}}-{{item.createTime.month}}-{{item.createTime.day}}

@@ -1,13 +1,5 @@
-
 $(document).ready(function () {
-
-     $(".table ").attr("style","table-layout: fixed")
-
-
-
-    $('#addData').click(function () {
-        window.location.href="../../sh_add/";
-    })
+    $('#addData').attr("disabled","true")
 
 	$("#allChoiceCheckbox").click(function () {
         if ($(this).prop("checked")==true)
@@ -17,13 +9,13 @@ $(document).ready(function () {
 
     })
 
-	$('#batchDelete').click(function () {
+    $('#batchDelete').click(function () {
         datadel()
     })
 
     // 批量删除
     function datadel() {
-	$("input[name='history']:checked").each(function () {
+	$("input[name='indicator']:checked").each(function () {
         del($(this), $(this).val());
     })
 }
@@ -31,18 +23,17 @@ $(document).ready(function () {
     function del(obj, id) {
 	$.ajax({
 			type: 'POST',
-			url: 'sh_delete/',
-            data:{'id':id},
+			url: '/i_delete/',
+            data: {'id':id},
 			dataType: 'json',
 			success: function(data){
 				$(obj).parents("tr").remove();
-				 window.location.href="../../historyPage/1/"
+				 window.location.href="../../indicatorPage/1/"
 			},
 			error:function(data) {
-				console.log(data.msg);
+
 			},
 	})
 }
-
 
 })

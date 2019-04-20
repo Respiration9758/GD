@@ -12,14 +12,17 @@ $(document).ready(function(){
 
 
     code.addEventListener("blur", function(){
-        instr = this.value
-        if (instr.length != 6){
+        var instr = this.value
+        var reg = /^\d{6}\b/;
+        if (!reg.test(instr)){
             codeerr.style.display = "block"
             return
         }
 
         $.post("/checkCode/", {"code":instr}, function(data){
-            if (data.status == "success"){
+            console.log(data)
+            if (data.status == "error"){
+                checkerr.style.display = "block"
 
             }
         })

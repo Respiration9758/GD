@@ -34,7 +34,7 @@ class SHistoryData(models.Model):
         ordering = ('createTime',)
 
     def __str__(self):
-        return "%s-%s-%s-%d" %(self.stock.code, self.stock.name, self.hd_startTime, self.number)
+        return "%s-%s-%s-%s-%d" %(self.id, self.stock.code, self.stock.name, self.hd_startTime, self.number)
 
     @classmethod
     def createSh(cls, startTime, endTime, number, stock, filePath, describe):
@@ -73,6 +73,11 @@ class TIData(models.Model):
     def __str__(self):
         return "%s-%s-%s" % (self.stockData.stock.name, self.stockData.hd_startTime,self.stockData.hd_endTime)
 
+    @classmethod
+    def createTID(cls, stockData, filePath, describe):
+        tid = cls(stockData=stockData, filePath=filePath, describe=describe, createTime=datetime.datetime.now(), isDelete=False)
+        return tid
+
 
 class PredictData(models.Model):
     startTime = models.DateField(default='')
@@ -89,3 +94,9 @@ class PredictData(models.Model):
 
     def __str__(self):
         return "%s-%s-%s" %(self.SHD.stock.name, self.startTime, self.predictTime)
+
+    @classmethod
+    def createPD(cls, startTime, predictTime, SHD, filePath, describe):
+        pd = cls(startTime=startTime, predictTime=predictTime, SHD=SHD, filePath=filePath, describe=describe, createTime=datetime.datetime.now(),
+                  isDelete=False)
+        return pd

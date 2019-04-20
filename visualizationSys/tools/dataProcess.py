@@ -13,7 +13,8 @@ def calculateKDJ(df):
                                    fastk_period=9, slowk_period=3, slowk_matype=0, slowd_period=3, slowd_matype=0)
     df['JValue'] = df.KValue*3-df.DValue*2
 
-def calculatePSY(df, period):
+def calculatePSY(df):
+    # period = 10
     # def getPSY(priceData, period):
         # rolling calculation of the PSY, psychological line
         # priceData should be the close price data, in np format
@@ -28,10 +29,10 @@ def calculatePSY(df, period):
         difference_dir = np.where(difference > 0, 1, 0)
         # get the direction of the price change, if increase, 1, else 0
         psy = np.zeros((len(df),))
-        psy[:period] *= np.nan
+        psy[:10] *= np.nan
         # there are two kind of lags here, the lag of the price change and the lag of the period
-        for i in range(period, len(df)):
-            psy[i] = (difference_dir[i - period + 1:i + 1].sum()) / period
+        for i in range(10, len(df)):
+            psy[i] = (difference_dir[i - 10 + 1:i + 1].sum()) / 10
             # definition of the psy: the number of the price increases to the total number of days
         df.insert(1, 'PSY', psy)
 

@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 # import os
 # Create your views here.
 from .models import Stock, SHistoryData, PredictData, TechIndicator, TIData
-from tools.dataProcess import calculateMA, calculateEMA, calculateKDJ, calculatePSY
+
 import tools.dataProcess
 
 
@@ -37,6 +37,7 @@ def historyPage(request, pageID):
         aPageNum = request.GET.get("aPageNum")
 
     historyList = SHistoryData.objects.filter(isDelete=False)
+    print(historyList)
     paginator = Paginator(historyList, aPageNum)
     page = paginator.page(pageID)
     return render(request, "sdv/historyPage.html", {"page": page, "detailpage": "historyPage",
@@ -107,7 +108,7 @@ def his_v(request):
 
             if 'MA_5' not in df_hd.columns.values.tolist():
                 for i in [5, 10, 20]:
-                    calculateMA(df_hd, i)
+                    tools.dataProcess.calculateMA(df_hd, i)
                 df_hd = df_hd.fillna('-')
                 df_hd.to_csv(h_d.filePath)
 
@@ -153,6 +154,7 @@ def pred_v(request):
             return redirect("/add_sh/")
     return render(request, 'sdv/pred_data_v.html', {"showData": showData, "title": "股价预测数据可视化",
                                                    "searchTip": "请输入股价预测数据ID"})
+
 def ti_v(request):
     # t_id = request.POST.get("searchid")
     # t_indicators = request.POST.getlist("indicators")
@@ -251,22 +253,10 @@ def ti_v(request):
     #         return redirect("/add_sh/")
     return render(request, 'sdv/ti_data_v.html', {"title": "技术指标数据可视化",
                                                     })
-
-
-def home(request):
-    # df = pd.read_csv(hd1.filePath)
-    #
-    # # pc = os.getcwd()
-    # # print(pc)
-    # # p1 = os.path.abspath('..')
-    # # print(p1)
-    # # p2 = os.path.abspath('.')
-    # # print(p2)
-    return render(request, 'sdv/home.html')
-
 @csrf_exempt
 def obtain_tidata(request):
     t_id = request.POST.get("searchid")
+    print(t_id)
     t_indicators = request.POST.getlist("indicators[]")
 
     show_data = {}
@@ -275,6 +265,7 @@ def obtain_tidata(request):
     else:
         try:
             t_d = TIData.objects.get(pk=t_id)
+            print(t_d.filePath)
 
             df_td = pd.read_csv(t_d.filePath, index_col='date', parse_dates=['date'])
 
@@ -324,24 +315,42 @@ def obtain_tidata(request):
 
             show_data['i_name_list'] = i_name_list
             show_data['t_indicators'] = t_indicators
-            print(i_name_list)
-            print(i_name_list)
+            print(show_data)
+
 
         except TIData.DoesNotExist as e:
             print("找不得到页面")
             return redirect("/add_sh/")
     return JsonResponse({'showData': show_data})
+def showIndicator(request):
+    indicator_list = TechIndicator.objects.filter(isDelete=False).values('shortName')
+    data = json.dumps(list(indicator_list))
+    return JsonResponse(data, safe=False)
+
+
+
+def home(request):
+    # df = pd.read_csv(hd1.filePath)
+    #
+    # # pc = os.getcwd()
+    # # print(pc)
+    # # p1 = os.path.abspath('..')
+    # # print(p1)
+    # # p2 = os.path.abspath('.')
+    # # print(p2)
+    return render(request, 'sdv/home.html')
 
 
 @csrf_exempt
-def sto_delete(request,id):
+def sto_delete(request):
+    id = request.POST.get('id')
     stock = Stock.objects.get(id=id)
     stock.isDelete = True
     stock.save()
     if (stock.isDelete == True):
-        ret = {'msg':'删除成功'}
+        ret = {'msg': '删除成功'}
     else:
-        ret = {'msg':'删除失败'}
+        ret = {'msg': '删除失败'}
     return JsonResponse(ret)
 @csrf_exempt
 def sto_add(request):
@@ -352,26 +361,43 @@ def sto_add(request):
         Stock.createSto(code, name, describe).save()
         return redirect("/stockPage/1/")
     else:
-        return render(request,"sdv/sto_add.html")
+        return render(request, "sdv/sto_add.html", {"title": "添加股票信息"})
 @csrf_exempt
 def checkCode(request):
     code = request.POST.get("code")
     try:
         sto = Stock.objects.get(code=code, isDelete=False)
+        print(sto.code)
         return JsonResponse({"data": "stock already exists", "status": "error"})
     except Stock.DoesNotExist as e:
         return JsonResponse({"data": "ok", "status": "success"})
 
+
+@csrf_exempt
+def sh_delete(request):
+    id = request.POST.get('id')
+    sh = SHistoryData.objects.get(id=id)
+    sh.isDelete = True
+    sh.save()
+    print("AJAX请求后")
+    print(SHistoryData.objects.filter(isDelete=False))
+    if (sh.isDelete == True):
+        ret = {'msg': '删除成功'}
+    else:
+        ret = {'msg': '删除失败'}
+    return JsonResponse(ret)
 @csrf_exempt
 def sh_add(request):
     if (request.method == 'POST'):
 
         stock = request.POST.get('stock')
+        print(type(stock))
         startTime = request.POST.get('startTime')
         endTime = request.POST.get('endTime')
         describe = request.POST.get('describe')
 
-        df_sh = ts.get_hist_data(stock,start=startTime,end=endTime)[['open', 'close', 'high', 'low', 'volume']]
+        df_sh = ts.get_hist_data(stock, start=startTime, end=endTime)[['open', 'close', 'high', 'low', 'volume']]
+        print(df_sh)
         df_sh.index = df_sh.index.sort_values()
         number = len(df_sh)
         filePath = './dataset/shd/'+stock+'_'+startTime+'_'+str(number)+'.csv'
@@ -379,32 +405,161 @@ def sh_add(request):
         sto = Stock.objects.get(code=stock)
         SHistoryData.createSh(startTime, endTime, number, sto,
                               filePath, describe).save()
-
-
-
-        # Stock.createSto(code, name, describe).save()
         return redirect("/historyPage/1/")
     else:
         today = str(datetime.datetime.now().date())
         print(today)
-        return render(request, "sdv/sh_add.html", {"today": today, })
-
+        return render(request, "sdv/sh_add.html", {"today": today, "title": "添加历史行情数据"})
 @csrf_exempt
 def showStock(request):
-
     sto_list = Stock.objects.filter(isDelete=False).values('code', 'name')
     data = json.dumps(list(sto_list))
-    print(type(data))
-    # data = serializers.serialize("json", sto_list)[1:-1]
-    return JsonResponse(data, safe=False)
-
-def showIndicator(request):
-    indicator_list = TechIndicator.objects.filter(isDelete=False).values('shortName')
-
-    data = json.dumps(list(indicator_list))
 
     # data = serializers.serialize("json", sto_list)[1:-1]
     return JsonResponse(data, safe=False)
+
+
+@csrf_exempt
+def tid_delete(request):
+    id = request.POST.get('id')
+    tid = TIData.objects.get(id=id)
+    tid.isDelete = True
+    tid.save()
+    print("AJAX请求后")
+    print(SHistoryData.objects.filter(isDelete=False))
+    if (tid.isDelete == True):
+        ret = {'msg': '删除成功'}
+    else:
+        ret = {'msg': '删除失败'}
+    return JsonResponse(ret)
+@csrf_exempt
+def tid_add(request):
+    if (request.method == 'POST'):
+
+        history = request.POST.get('history')
+
+        describe = request.POST.get('describe')
+
+
+        sh = SHistoryData.objects.get(pk=history)
+        filePath = './dataset/tid/'+sh.stock.code+'_'+sh.hd_startTime.strftime('%Y-%m-%d')+'_'+str(sh.number)+'.csv'
+        df_tid = pd.read_csv(sh.filePath, index_col='date', parse_dates=['date'])
+        if 'MA_5' not in df_tid.columns.values.tolist():
+            for i in [5, 10, 20]:
+                tools.dataProcess.calculateMA(df_tid, i)
+        for i in [10, 20, 30]:
+            tools.dataProcess.calculateEMA(df_tid, i)
+        tools.dataProcess.calculateMACD(df_tid)
+        tools.dataProcess.calculatePSY(df_tid)
+        tools.dataProcess.calculateTRIX(df_tid)
+        tools.dataProcess.calculateOBV(df_tid)
+        tools.dataProcess.calculateMOM(df_tid)
+        tools.dataProcess.calculateBBANDS(df_tid)
+        tools.dataProcess.calculateRSI(df_tid)
+        tools.dataProcess.calculateKDJ(df_tid)
+        df_tid = df_tid.fillna('-')
+        df_tid.to_csv(filePath)
+
+        TIData.createTID(sh, filePath, describe).save()
+        return redirect("/tidataPage/1/")
+    else:
+
+        return render(request, "sdv/tid_add.html",{'title':"添加技术指标数据"})
+@csrf_exempt
+def showHistory(request):
+    sh_list = SHistoryData.objects.filter(isDelete=False)
+    data = []
+    for item in sh_list:
+        data.append(item.__str__())
+    # print(type(sh_list[0].__str__()))
+    # data = serializers.serialize("json", sh_list)
+    data = json.dumps(data)
+    return JsonResponse(data, safe=False)
+
+
+@csrf_exempt
+def pd_delete(request):
+    id = request.POST.get('id')
+    p = PredictData.objects.get(id=id)
+    p.isDelete = True
+    p.save()
+    if (p.isDelete == True):
+        ret = {'msg': '删除成功'}
+    else:
+        ret = {'msg': '删除失败'}
+    return JsonResponse(ret)
+@csrf_exempt
+def pd_add(request):
+    if (request.method == 'POST'):
+
+        file = request.FILES.get("inputfile", None)
+
+        test_date = request.POST.get('test_date')
+        pred_date = request.POST.get('pred_date')
+        history = request.POST.get('history')
+        describe = request.POST.get('describe')
+
+        sh = SHistoryData.objects.get(pk=history)
+
+        filePath = './dataset/pd/' + sh.stock.code + '_' + test_date + '_' + pred_date + '.csv'
+        with open(filePath, 'wb') as fp:
+            for info in file.chunks():
+                fp.write(info)
+
+        PredictData.createPD(test_date,pred_date,sh, filePath, describe).save()
+
+        return redirect("/predictPage/1/")
+    else:
+
+        return render(request, "sdv/pd_add.html",{'title':"上传股价预测数据"})
+@csrf_exempt
+def obtain_time(request):
+    sh_id = request.POST.get("id")
+    sh = SHistoryData.objects.get(id=sh_id)
+    df_sh = pd.read_csv(sh.filePath, index_col='date', parse_dates=['date'])
+    startTime = df_sh.index[-10].strftime("%Y-%m-%d")
+    # print("预测开始时间")
+    # print(startTime)
+    # print(datetime.datetime.now().weekday())
+    # today = datetime.datetime.now()
+    # hou = today + datetime.timedelta(days=2)
+    # print(hou)
+    # print(sh.hd_endTime)
+    sh_endTime = df_sh.index[-1]
+    if(sh_endTime.weekday() == 4):
+        predictTime = sh_endTime + datetime.timedelta(days=3)
+    elif(sh_endTime.weekday() == 5):
+        predictTime = sh_endTime + datetime.timedelta(days=2)
+    else:
+        predictTime = sh_endTime + datetime.timedelta(days=1)
+    predictTime = predictTime.strftime("%Y-%m-%d")
+    time = {
+        'startTime': startTime,
+        "predictTime": predictTime
+    }
+    return JsonResponse(time)
+
+
+
+
+@csrf_exempt
+def i_delete(request):
+    id = request.POST.get('id')
+    ti = TechIndicator.objects.get(id=id)
+    ti.isDelete = True
+    ti.save()
+    if (ti.isDelete == True):
+        ret = {'msg': '删除成功'}
+    else:
+        ret = {'msg': '删除失败'}
+    return JsonResponse(ret)
+
+
+
+
+
+
+
 
 
 

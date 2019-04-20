@@ -1,15 +1,11 @@
-
 $(document).ready(function () {
 
-     $(".table ").attr("style","table-layout: fixed")
-
-
-
-    $('#addData').click(function () {
-        window.location.href="../../sh_add/";
+     $('#addData').click(function () {
+        window.location.href="../../tid_add/";
     })
 
-	$("#allChoiceCheckbox").click(function () {
+
+     $("#allChoiceCheckbox").click(function () {
         if ($(this).prop("checked")==true)
             $('.everyCheckbox').prop("checked", true)
         else
@@ -17,13 +13,14 @@ $(document).ready(function () {
 
     })
 
-	$('#batchDelete').click(function () {
+
+    $('#batchDelete').click(function () {
         datadel()
     })
 
     // 批量删除
     function datadel() {
-	$("input[name='history']:checked").each(function () {
+	$("input[name='tidata']:checked").each(function () {
         del($(this), $(this).val());
     })
 }
@@ -31,18 +28,17 @@ $(document).ready(function () {
     function del(obj, id) {
 	$.ajax({
 			type: 'POST',
-			url: 'sh_delete/',
-            data:{'id':id},
+			url: '/tid_delete/',
+            data: {'id':id},
 			dataType: 'json',
 			success: function(data){
 				$(obj).parents("tr").remove();
-				 window.location.href="../../historyPage/1/"
+				 window.location.href="../../tidataPage/1/"
 			},
 			error:function(data) {
-				console.log(data.msg);
+
 			},
 	})
 }
-
 
 })

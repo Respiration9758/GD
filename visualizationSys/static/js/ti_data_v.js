@@ -48,6 +48,8 @@ $(document).ready(function () {
             },
 			dataType: 'json',
 			success: function(data){
+            	console.log("ID为4")
+            	console.log(data)
             	if (search_ti.length==10){
             		 /*基于准备好的dom，初始化echarts实例*/
                 var myChart = echarts.init(document.getElementById('main'));
@@ -250,8 +252,6 @@ $(document).ready(function () {
 			}
 
 
-				console.log(seriesList)
-				console.log(graphicList)
 
 
 
@@ -832,8 +832,7 @@ $(document).ready(function () {
                                 	normal:{
                                 		color: function (params) {
                                 			var index_num = params.value
-											console.log(params)
-											console.log(index_num)
+
 											if(index_num>0){
 												return 'red'
 											}else {
@@ -1097,7 +1096,6 @@ $(document).ready(function () {
 
                 }
 
-				console.log(option)
                 // 使用刚指定的配置项和数据显示图表
                 myChart.setOption(option);
 
@@ -1225,8 +1223,8 @@ $(document).ready(function () {
                                 	normal:{
                                 		color: function (params) {
                                 			var index_num = params.value
-											console.log(params)
-											console.log(index_num)
+
+
 											if(index_num>0){
 												return 'red'
 											}else {
@@ -1520,7 +1518,6 @@ $(document).ready(function () {
 
                 }
 
-				console.log(option)
                 // 使用刚指定的配置项和数据显示图表
                 myChart.setOption(option);
 
@@ -1647,8 +1644,7 @@ $(document).ready(function () {
                                 	normal:{
                                 		color: function (params) {
                                 			var index_num = params.value
-											console.log(params)
-											console.log(index_num)
+
 											if(index_num>0){
 												return 'red'
 											}else {
@@ -1725,9 +1721,6 @@ $(document).ready(function () {
                     }
 			}
 
-
-				console.log(seriesList)
-				console.log(graphicList)
 
 
 
@@ -1973,7 +1966,7 @@ $(document).ready(function () {
 
                 }
 
-				console.log(option)
+
                 // 使用刚指定的配置项和数据显示图表
                 myChart.setOption(option);
 
@@ -2099,8 +2092,9 @@ $(document).ready(function () {
                                 	normal:{
                                 		color: function (params) {
                                 			var index_num = params.value
-											console.log(params)
-											console.log(index_num)
+
+
+
 											if(index_num>0){
 												return 'red'
 											}else {
@@ -2178,8 +2172,8 @@ $(document).ready(function () {
 			}
 
 
-				console.log(seriesList)
-				console.log(graphicList)
+
+
 
 
 
@@ -2455,7 +2449,7 @@ $(document).ready(function () {
 
                 }
 
-				console.log(option)
+
                 // 使用刚指定的配置项和数据显示图表
                 myChart.setOption(option);
 
@@ -2582,8 +2576,8 @@ $(document).ready(function () {
                                 	normal:{
                                 		color: function (params) {
                                 			var index_num = params.value
-											console.log(params)
-											console.log(index_num)
+
+
 											if(index_num>0){
 												return 'red'
 											}else {
@@ -2660,9 +2654,6 @@ $(document).ready(function () {
                     }
 			}
 
-
-				console.log(seriesList)
-				console.log(graphicList)
 
 
 
@@ -2967,7 +2958,8 @@ $(document).ready(function () {
 
                 }
 
-				console.log(option)
+
+
                 // 使用刚指定的配置项和数据显示图表
                 myChart.setOption(option);
 
@@ -3094,8 +3086,7 @@ $(document).ready(function () {
                                 	normal:{
                                 		color: function (params) {
                                 			var index_num = params.value
-											console.log(params)
-											console.log(index_num)
+
 											if(index_num>0){
 												return 'red'
 											}else {
@@ -3173,8 +3164,6 @@ $(document).ready(function () {
 			}
 
 
-				console.log(seriesList)
-				console.log(graphicList)
 
 
 
@@ -3508,7 +3497,7 @@ $(document).ready(function () {
 
                 }
 
-				console.log(option)
+
                 // 使用刚指定的配置项和数据显示图表
                 myChart.setOption(option);
 
@@ -3635,8 +3624,7 @@ $(document).ready(function () {
                                 	normal:{
                                 		color: function (params) {
                                 			var index_num = params.value
-											console.log(params)
-											console.log(index_num)
+
 											if(index_num>0){
 												return 'red'
 											}else {
@@ -3714,8 +3702,7 @@ $(document).ready(function () {
 			}
 
 
-				console.log(seriesList)
-				console.log(graphicList)
+
 
 
 
@@ -4078,7 +4065,6 @@ $(document).ready(function () {
 
                 }
 
-				console.log(option)
                 // 使用刚指定的配置项和数据显示图表
                 myChart.setOption(option);
 
@@ -4205,8 +4191,7 @@ $(document).ready(function () {
                                 	normal:{
                                 		color: function (params) {
                                 			var index_num = params.value
-											console.log(params)
-											console.log(index_num)
+
 											if(index_num>0){
 												return 'red'
 											}else {
@@ -4284,8 +4269,6 @@ $(document).ready(function () {
 			}
 
 
-				console.log(seriesList)
-				console.log(graphicList)
 
 
 
@@ -4678,7 +4661,6 @@ $(document).ready(function () {
 
                 }
 
-				console.log(option)
                 // 使用刚指定的配置项和数据显示图表
                 myChart.setOption(option);
 
@@ -4805,8 +4787,7 @@ $(document).ready(function () {
                                 	normal:{
                                 		color: function (params) {
                                 			var index_num = params.value
-											console.log(params)
-											console.log(index_num)
+
 											if(index_num>0){
 												return 'red'
 											}else {
@@ -4884,8 +4865,7 @@ $(document).ready(function () {
 			}
 
 
-				console.log(seriesList)
-				console.log(graphicList)
+
 
 
 
@@ -5270,17 +5250,18 @@ $(document).ready(function () {
 					right: 20,
 					height: 60,
 					top: 430
-				},{
+				},
+					{
 					left: 20,
 					right: 20,
 					height: 60,
-					top: 510
-				},{
+					top: 510},{
 					left: 20,
 					right: 20,
 					height: 60,
 					top: 590
-				},{
+				},
+					{
 					left: 20,
 					right: 20,
 					height: 60,
@@ -5290,7 +5271,8 @@ $(document).ready(function () {
 					right: 20,
 					height: 60,
 					top: 750
-				},{
+				},
+					{
 					left: 20,
 					right: 20,
 					height: 60,
@@ -5307,7 +5289,7 @@ $(document).ready(function () {
 
                 }
 
-				console.log(option)
+
                 // 使用刚指定的配置项和数据显示图表
                 myChart.setOption(option);
 

@@ -12,35 +12,33 @@ $(document).ready(function () {
     })
 
 
-    $('#batchDelete').click(function () {
-        datadel()
-    })
-
-
     $('#addData').click(function () {
         window.location.href="../../sto_add/";
     })
 
+    $('#batchDelete').click(function () {
+        datadel()
+    })
 
     // 批量删除
-function datadel() {
+    function datadel() {
 	$("input[name='stock']:checked").each(function () {
         del($(this), $(this).val());
     })
 }
 
-function del(obj, id) {
+    function del(obj, id) {
 	$.ajax({
-			type: 'delete',
-			url: 'sto_delete/'+id,
+			type: 'POST',
+			url: '/sto_delete/',
+            data: {'id':id},
 			dataType: 'json',
 			success: function(data){
 				$(obj).parents("tr").remove();
-				alert("已删除"+ id + "!")
-			    // layer.msg('已删除!'+id,{icon:1,time:1000});
+				 window.location.href="../../stockPage/1/"
 			},
 			error:function(data) {
-				console.log(data.msg);
+
 			},
 	})
 }

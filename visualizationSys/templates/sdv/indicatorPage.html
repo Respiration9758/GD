@@ -2,6 +2,10 @@
 
 {% load static from staticfiles %}
 
+{%block linkscript%}
+<script type="text/javascript" charset="UTF-8" src="{% static '/js/indicatorPage.js'%}"></script>
+{%endblock linkscript%}
+
 {% block breadcrumb%}
 
 	<li>
@@ -17,23 +21,23 @@
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
 		<tr>
-			<th  style="text-align: center">
-				<input type="checkbox">
+			<th  style="text-align: center; width: 5%">
+				<input type="checkbox" id="allChoiceCheckbox">
 			</th>
-			<th>
+			<th style="width: 5%">
 				ID
 			</th>
-			<th>
+			<th style="width: 14%">
 				技术指标名称
 			</th>
-			<th>
+			<th style="width: 8%">
 				简称
 			</th>
-            <th>
+            <th style="width: 10%">
 				指标类型
 			</th>
 			<th>
-				计算接口
+				详情
 			</th>
 
 
@@ -44,7 +48,7 @@
 			{% for item in page.object_list %}
 				<tr>
 					<td style="text-align: center">
-						<input type="checkbox">
+						<input type="checkbox" class="everyCheckbox" name="indicator" value="{{item.id}}">
 					</td>
 					<td>
 						{{item.id}}
@@ -60,7 +64,7 @@
 						{{item.tType}}
 					</td>
 					<td>
-						{{item.interface}}
+						{{item.describe}}
 					</td>
 
 		   		</tr>

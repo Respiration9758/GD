@@ -21,20 +21,21 @@
 					<form role="form" action="/sh_add/" method="post">
 						<div class="form-group">
                             <label >股票代码及名称</label>
-                            <select id='stock' name="stock" class="form-control" >
-
-
+                            <!--<select id='stock' name="stock" class="form-control" >-->
+                            <!--</select>-->
+							</br>
+                            <select id="stock" class="selectpicker form-control" style="display:inline-block" data-live-search="true"  name="stock">
                             </select>
                         </div>
                         <div class="form-group">
 							 <label>开始日期</label>
                              <br/>
-                             <input type="date" id="startTime" name="startTime" min="1990-01-01" max="{{today}}" >
+                             <input type="date" id="startTime" name="startTime" class="form-control" min="1990-01-01" max="{{today}}" >
 						</div>
                         <div class="form-group">
 							 <label>结束日期</label>
                                <br/>
-                            <input type="date" id="endTime" name="endTime"  max="{{today}}">
+                            <input type="date" id="endTime" name="endTime" class="form-control" max="{{today}}">
 						</div>
 
 						<div class="form-group">

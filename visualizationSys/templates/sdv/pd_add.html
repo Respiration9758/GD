@@ -1,0 +1,54 @@
+{% extends "sdv/base_add.html" %}
+{% load static from staticfiles %}
+{% block linkscript %}
+<script type="text/javascript" charset="utf-8" src="{% static 'js/pd_add.js' %}"></script>
+{% endblock linkscript %}
+
+
+{%block form%}
+    <div class="col-md-2 column">
+		</div>
+		<div class="col-md-8 column">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<h3>
+						上传股价预测数据
+					</h3>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<form role="form" action="/pd_add/" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+                            <label >历史行情数据</label>
+                            </br>
+                            <select id="historySelect" class="selectpicker form-control" style="display:inline-block; width: 60px" data-live-search="true"  name="history">
+                            </select>
+                        </div>
+                        <div class="form-group">
+							 <label>预测数据开始日期</label><input id="test_date" name="test_date" type="text" class="form-control"  />
+						</div>
+                        <div class="form-group">
+							 <label>预测日期</label><input id="pred_date" name="pred_date" type="text" class="form-control"  />
+						</div>
+                        <div class="form-group">
+                            <label for="inputfile">文件输入</label>
+                            <br>
+                            <input type="file" id="inputfile" name="inputfile"  style="display:inline-block">
+                            <p class="help-block">请上传格式正确的股价预测数据文件！</p>
+                        </div>
+
+
+						<div class="form-group">
+							 <label>详情</label><textarea id="describe" name="describe" class="form-control" rows="5" ></textarea>
+						</div>
+
+						<button type="submit" class="btn btn-default">确认添加</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2 column">
+		</div>
+{%endblock form%}
+
