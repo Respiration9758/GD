@@ -2,33 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40d78775-abba-4fcc-8b1e-3754692376c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/js/indicatorPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/pd_add.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/tid_add.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/tidataPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/sdv/pd_add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/sdv/tid_add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/historyPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/historyPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/predictPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/predictPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/sh_add.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/sh_add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/sto_add.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/sto_add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/stockPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/stockPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/ti_data_v.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/ti_data_v.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stockDataVisualized/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockDataVisualized/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stockDataVisualized/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockDataVisualized/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stockDataVisualized/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockDataVisualized/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sdv/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sdv/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sdv/base_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sdv/base_add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sdv/historyPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sdv/historyPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/sdv/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sdv/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sdv/indicatorPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sdv/indicatorPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sdv/predictPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sdv/predictPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sdv/sh_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sdv/sh_add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sdv/sto_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sdv/sto_add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sdv/ti_data_v.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sdv/ti_data_v.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sdv/tidataPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sdv/tidataPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/dataProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/dataProcess.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +17,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stockDataVisualized/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
+            <state relative-caret-position="840">
               <caret line="36" column="66" selection-start-line="36" selection-start-column="66" selection-end-line="36" selection-end-column="66" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
@@ -53,11 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/pd_add.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="1152">
               <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
-              <folding>
-                <element signature="e#56#867#0" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -65,7 +38,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/sdv/predictPage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1043">
+            <state relative-caret-position="1272">
               <caret line="53" column="82" selection-start-line="53" selection-start-column="82" selection-end-line="53" selection-end-column="82" />
               <folding>
                 <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
@@ -82,8 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stockDataVisualized/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+            <state relative-caret-position="2424">
+              <caret line="102" selection-start-line="102" selection-end-line="102" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -91,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/sdv/pd_add.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">
-              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="n#style#0;n#select#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
               </folding>
@@ -104,14 +77,121 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/ti_data_v.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="502" column="42" lean-forward="true" selection-start-line="502" selection-start-column="16" selection-end-line="502" selection-end-column="42" />
+              <folding>
+                <element signature="e#1920#1933#0" />
+                <element signature="e#1759#2221#0" />
+                <element signature="e#2245#2613#0" />
+                <element signature="e#2615#2793#0" />
+                <element signature="e#2739#2787#0" />
+                <element signature="e#2795#2975#0" />
+                <element signature="e#2921#2969#0" />
+                <element signature="e#2977#3157#0" />
+                <element signature="e#3103#3151#0" />
+                <element signature="e#3158#3393#0" />
+                <element signature="e#3255#3359#0" />
+                <element signature="e#3312#3747#1" />
+                <element signature="e#3766#4136#0" />
+                <element signature="e#4138#4261#0" />
+                <element signature="e#4422#4495#0" />
+                <element signature="e#4284#4578#0" />
+                <element signature="e#4580#4951#0" />
+                <element signature="e#4917#4944#0" />
+                <element signature="e#5632#5867#0" />
+                <element signature="e#5876#6070#0" />
+                <element signature="e#6288#6495#0" />
+                <element signature="e#6504#6711#0" />
+                <element signature="e#3452#6474#0" />
+                <element signature="e#7501#7516#0" />
+                <element signature="e#7526#7541#0" />
+                <element signature="e#3728#4433#0" />
+                <element signature="e#7345#7477#0" />
+                <element signature="e#7494#7627#0" />
+                <element signature="e#10095#10108#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/sdv/historyPage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="53" column="82" selection-start-line="53" selection-start-column="82" selection-end-line="53" selection-end-column="82" />
+              <folding>
+                <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/sdv/his_data_v.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="71">
+              <caret line="317" column="14" lean-forward="true" selection-start-line="312" selection-start-column="11" selection-end-line="317" selection-end-column="14" />
+              <folding>
+                <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#8452#8541#0" />
+                <element signature="e#8564#8746#0" />
+                <element signature="e#8768#8880#0" />
+                <element signature="e#8900#9118#0" />
+                <element signature="e#9139#9602#0" />
+                <element signature="e#9623#9834#0" />
+                <element signature="e#9848#9875#0" />
+                <element signature="e#10429#10761#0" />
+                <element signature="e#10763#10852#0" />
+                <element signature="e#10875#15777#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stockDataVisualized/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="505" column="37" selection-start-line="505" selection-start-column="37" selection-end-line="505" selection-end-column="37" />
+            <state relative-caret-position="345">
+              <caret line="407" column="42" lean-forward="true" selection-start-line="407" selection-start-column="42" selection-end-line="407" selection-end-column="42" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#5976#10160#0" />
                 <element signature="e#10206#12652#0" />
                 <element signature="e#13154#13393#0" />
+                <element signature="e#13433#13767#0" />
+                <element signature="e#13809#14114#0" />
+                <element signature="e#14158#14468#0" />
+                <element signature="e#15494#15704#0" />
+                <element signature="e#15749#16057#0" />
+                <element signature="e#16097#17338#0" />
+                <element signature="e#17382#17672#0" />
+                <element signature="e#17716#17945#0" />
+                <element signature="e#17984#18728#0" />
+                <element signature="e#18772#19666#0" />
+                <element signature="e#19711#19946#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/sdv/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="178" column="72" selection-start-line="178" selection-start-column="72" selection-end-line="178" selection-end-column="72" />
+              <folding>
+                <element signature="n#div#0;n#nav#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -166,20 +246,17 @@
         <option value="$PROJECT_DIR$/templates/sdv/ti_data_v10.html" />
         <option value="$PROJECT_DIR$/templates/sdv/base_v.html" />
         <option value="$PROJECT_DIR$/templates/sdv/pred_data_v.html" />
-        <option value="$PROJECT_DIR$/templates/sdv/his_data_v.html" />
         <option value="$PROJECT_DIR$/templates/sdv/stockPage.html" />
         <option value="$PROJECT_DIR$/templates/sdv/ti_data_v.html" />
         <option value="$PROJECT_DIR$/templates/sdv/base.html" />
         <option value="$PROJECT_DIR$/templates/sdv/base_add.html" />
         <option value="$PROJECT_DIR$/static/js/tid_add.js" />
         <option value="$PROJECT_DIR$/tools/dataProcess.py" />
-        <option value="$PROJECT_DIR$/static/js/ti_data_v.js" />
         <option value="$PROJECT_DIR$/templates/sdv/tid_add.html" />
         <option value="$PROJECT_DIR$/static/js/sh_add.js" />
         <option value="$PROJECT_DIR$/templates/sdv/sh_add.html" />
         <option value="$PROJECT_DIR$/static/js/sto_add.js" />
         <option value="$PROJECT_DIR$/templates/sdv/sto_add.html" />
-        <option value="$PROJECT_DIR$/templates/sdv/home.html" />
         <option value="$PROJECT_DIR$/static/js/stockPage.js" />
         <option value="$PROJECT_DIR$/templates/sdv/historyPage.html" />
         <option value="$PROJECT_DIR$/templates/sdv/indicatorPage.html" />
@@ -192,8 +269,11 @@
         <option value="$PROJECT_DIR$/stockDataVisualized/urls.py" />
         <option value="$PROJECT_DIR$/static/js/pd_add.js" />
         <option value="$PROJECT_DIR$/stockDataVisualized/models.py" />
-        <option value="$PROJECT_DIR$/stockDataVisualized/views.py" />
         <option value="$PROJECT_DIR$/templates/sdv/pd_add.html" />
+        <option value="$PROJECT_DIR$/templates/sdv/his_data_v.html" />
+        <option value="$PROJECT_DIR$/static/js/ti_data_v.js" />
+        <option value="$PROJECT_DIR$/stockDataVisualized/views.py" />
+        <option value="$PROJECT_DIR$/templates/sdv/home.html" />
       </list>
     </option>
   </component>
@@ -329,11 +409,12 @@
       <workItem from="1555593931979" duration="2174000" />
       <workItem from="1555653591189" duration="26472000" />
       <workItem from="1555738192233" duration="28138000" />
+      <workItem from="1555820653915" duration="12272000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="326006000" />
+    <option name="totallyTimeSpent" value="338278000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -347,7 +428,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22919819" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23298033" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -479,16 +560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sdv/his_data_v.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
-          <folding>
-            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/sdv/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -519,50 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/ti_data_v.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19272">
-          <caret line="5291" selection-start-line="5291" selection-end-line="5291" />
-          <folding>
-            <element signature="e#54#872#0" />
-            <element signature="e#326#864#0" />
-            <element signature="e#3465#6551#0" />
-            <element signature="e#3624#5487#0" />
-            <element signature="e#17334#27653#0" />
-            <element signature="e#27695#38630#0" />
-            <element signature="e#29904#32990#0" />
-            <element signature="e#30063#31926#0" />
-            <element signature="e#38672#50292#0" />
-            <element signature="e#40882#43968#0" />
-            <element signature="e#41041#42904#0" />
-            <element signature="e#50334#62575#0" />
-            <element signature="e#62617#75497#0" />
-            <element signature="e#75539#89047#0" />
-            <element signature="e#89089#103224#0" />
-            <element signature="e#103266#118034#0" />
-            <element signature="e#123725#133369#0" />
-            <element signature="e#131156#131342#0" />
-            <element signature="e#131349#131535#0" />
-            <element signature="e#131536#131722#0" />
-            <element signature="e#131729#131915#0" />
-            <element signature="e#131916#132102#0" />
-            <element signature="e#132109#132295#0" />
-            <element signature="e#132296#132483#0" />
-            <element signature="e#132497#132566#0" />
-            <element signature="e#132568#132637#0" />
-            <element signature="e#132638#132707#0" />
-            <element signature="e#132708#132777#0" />
-            <element signature="e#132778#132847#0" />
-            <element signature="e#132848#132917#0" />
-            <element signature="e#132918#132987#0" />
-            <element signature="e#132988#133057#0" />
-            <element signature="e#133058#133127#0" />
-            <element signature="e#133128#133197#0" />
-            <element signature="e#133198#133267#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/sh_add.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -581,42 +608,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sdv/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="31" column="53" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
-          <folding>
-            <element signature="n#div#0;n#nav#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/sto_add.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="61">
           <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
           <folding>
             <element signature="e#373#644#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sdv/historyPage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="53" column="82" selection-start-line="53" selection-start-column="82" selection-end-line="53" selection-end-column="82" />
-          <folding>
-            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -770,19 +767,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stockDataVisualized/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stockDataVisualized/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
+        <state relative-caret-position="840">
           <caret line="36" column="66" selection-start-line="36" selection-start-column="66" selection-end-line="36" selection-end-column="66" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
@@ -790,21 +777,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stockDataVisualized/views.py">
+    <entry file="file://$PROJECT_DIR$/static/js/pd_add.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="505" column="37" selection-start-line="505" selection-start-column="37" selection-end-line="505" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#10206#12652#0" />
-            <element signature="e#13154#13393#0" />
-          </folding>
+        <state relative-caret-position="1152">
+          <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/sdv/predictPage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1043">
+        <state relative-caret-position="1272">
           <caret line="53" column="82" selection-start-line="53" selection-start-column="82" selection-end-line="53" selection-end-column="82" />
           <folding>
             <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
@@ -817,12 +799,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/pd_add.js">
+    <entry file="file://$PROJECT_DIR$/stockDataVisualized/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+        <state relative-caret-position="2424">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
           <folding>
-            <element signature="e#56#867#0" />
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sdv/historyPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="53" column="82" selection-start-line="53" selection-start-column="82" selection-end-line="53" selection-end-column="82" />
+          <folding>
+            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sdv/his_data_v.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="317" column="14" lean-forward="true" selection-start-line="312" selection-start-column="11" selection-end-line="317" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#8452#8541#0" />
+            <element signature="e#8564#8746#0" />
+            <element signature="e#8768#8880#0" />
+            <element signature="e#8900#9118#0" />
+            <element signature="e#9139#9602#0" />
+            <element signature="e#9623#9834#0" />
+            <element signature="e#9848#9875#0" />
+            <element signature="e#10429#10761#0" />
+            <element signature="e#10763#10852#0" />
+            <element signature="e#10875#15777#0" />
           </folding>
         </state>
       </provider>
@@ -830,9 +849,83 @@
     <entry file="file://$PROJECT_DIR$/templates/sdv/pd_add.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
             <element signature="n#style#0;n#select#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/ti_data_v.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="502" column="42" lean-forward="true" selection-start-line="502" selection-start-column="16" selection-end-line="502" selection-end-column="42" />
+          <folding>
+            <element signature="e#1920#1933#0" />
+            <element signature="e#1759#2221#0" />
+            <element signature="e#2245#2613#0" />
+            <element signature="e#2615#2793#0" />
+            <element signature="e#2739#2787#0" />
+            <element signature="e#2795#2975#0" />
+            <element signature="e#2921#2969#0" />
+            <element signature="e#2977#3157#0" />
+            <element signature="e#3103#3151#0" />
+            <element signature="e#3158#3393#0" />
+            <element signature="e#3255#3359#0" />
+            <element signature="e#3312#3747#1" />
+            <element signature="e#3766#4136#0" />
+            <element signature="e#4138#4261#0" />
+            <element signature="e#4422#4495#0" />
+            <element signature="e#4284#4578#0" />
+            <element signature="e#4580#4951#0" />
+            <element signature="e#4917#4944#0" />
+            <element signature="e#5632#5867#0" />
+            <element signature="e#5876#6070#0" />
+            <element signature="e#6288#6495#0" />
+            <element signature="e#6504#6711#0" />
+            <element signature="e#3452#6474#0" />
+            <element signature="e#7501#7516#0" />
+            <element signature="e#7526#7541#0" />
+            <element signature="e#3728#4433#0" />
+            <element signature="e#7345#7477#0" />
+            <element signature="e#7494#7627#0" />
+            <element signature="e#10095#10108#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stockDataVisualized/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="407" column="42" lean-forward="true" selection-start-line="407" selection-start-column="42" selection-end-line="407" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#5976#10160#0" />
+            <element signature="e#10206#12652#0" />
+            <element signature="e#13154#13393#0" />
+            <element signature="e#13433#13767#0" />
+            <element signature="e#13809#14114#0" />
+            <element signature="e#14158#14468#0" />
+            <element signature="e#15494#15704#0" />
+            <element signature="e#15749#16057#0" />
+            <element signature="e#16097#17338#0" />
+            <element signature="e#17382#17672#0" />
+            <element signature="e#17716#17945#0" />
+            <element signature="e#17984#18728#0" />
+            <element signature="e#18772#19666#0" />
+            <element signature="e#19711#19946#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sdv/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="178" column="72" selection-start-line="178" selection-start-column="72" selection-end-line="178" selection-end-column="72" />
+          <folding>
+            <element signature="n#div#0;n#nav#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>

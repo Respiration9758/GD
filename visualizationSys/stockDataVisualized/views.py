@@ -402,7 +402,7 @@ def sh_add(request):
         number = len(df_sh)
         filePath = './dataset/shd/'+stock+'_'+startTime+'_'+str(number)+'.csv'
         df_sh.to_csv(filePath)
-        sto = Stock.objects.get(code=stock)
+        sto = Stock.objects.get(code=stock, isDelete=False)
         SHistoryData.createSh(startTime, endTime, number, sto,
                               filePath, describe).save()
         return redirect("/historyPage/1/")
