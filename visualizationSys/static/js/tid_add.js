@@ -18,12 +18,15 @@ $(document).ready(function () {
         dataType : 'json',
         success : function(datas) {//返回list数据并循环获取
             datas =  $.parseJSON( datas )
+            console.log(datas)
 
 
             var select = $("#historySelect");
             for (var i = 0; i < datas.length; i++) {
-                select.append("<option value='"+datas[i][0] +"'>"
-                    +datas[i] + "</option>");
+                sh = datas[i].split('-')
+                console.log(sh)
+                select.append("<option value='"+sh[0] +"'>"
+                    +datas[i]+ "</option>");
             }
             $('.selectpicker').selectpicker('val', '');
             $('.selectpicker').selectpicker('refresh');

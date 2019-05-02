@@ -13,7 +13,9 @@ urlpatterns = [
     re_path(r'^tidataPage/(\d+)/$', views.tidataPage, name='tidataPage'),
 
     re_path(r'^his_v/$', views.his_v, name='his_v'),
+    re_path(r'obtain_hdata/$', views.obtain_hdata, name='obtain_hdata'),
     re_path(r'^pred_v/$', views.pred_v, name='pred_v'),
+    re_path(r'obtain_pdata/$', views.obtain_pdata, name='obtain_pdata'),
     re_path(r'^ti_v/$', views.ti_v, name='ti_v'),
     re_path(r'showIndicator/$', views.showIndicator, name='showIndicator'),
     re_path(r'obtain_tidata/$', views.obtain_tidata, name='obtain_tidata'),

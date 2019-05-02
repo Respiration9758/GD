@@ -20,7 +20,7 @@ $(document).ready(function(){
         }
 
         $.post("/checkCode/", {"code":instr}, function(data){
-            console.log(data)
+
             if (data.status == "error"){
                 checkerr.style.display = "block"
 
@@ -28,24 +28,5 @@ $(document).ready(function(){
         })
     },false)
 
-    // $('#code').focus(function () {
-    //     $('#codeerr').attr("style","{display:none}")
-    //     $('#checkerr').attr("style","{display:none}")
-    // })
-    //
-    // $('#code').blur(function () {
-    //     instr = $(this).val()
-    //
-    //     if (instr.length < 6 || instr.length > 6){
-    //         $('#codeerr').attr("style","{display:block}")
-    //         return
-    //     }
-    //
-    //     $.post("/checkCode/", {"code":instr}, function(data){
-    //         if (data.status == "error"){
-    //             $('#checkerr').attr("style","{display:block}")
-    //         }
-    //     })
-    // })
 
 })
