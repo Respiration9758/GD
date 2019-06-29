@@ -21,8 +21,11 @@ $(document).ready(function () {
 
 
                 var select = $("#historySelect");
+
+
                 for (var i = 0; i < datas.length; i++) {
-                    select.append("<option value='" + datas[i][0] + "'>"
+                    sh = datas[i].split('-')
+                    select.append("<option value='" + sh[0] + "'>"
                         + datas[i] + "</option>");
                 }
                 $('.selectpicker').selectpicker('val', '');
